@@ -85,8 +85,9 @@ ul li a:hover{
 }
 
 .left-side {
-    margin: 16px;
+    /* margin: 16px; */
     color: black;
+    position: relative;
 
 }
 .left-btn{
@@ -101,6 +102,46 @@ ul li a:hover{
     background-color: #7884b8;
     color: #fff;
     transition: 0.5s ease-in-out;
+}
+.user-menu{
+    /* margin-right: 10px; */
+    cursor: pointer;
+}
+.user-content{
+    border: 1px solid #b9b8b8;;
+    padding: 16px;
+    border-radius: 30px;
+    cursor: pointer;
+}
+.user-content:hover{
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 8px 8px -4px, rgba(0, 0, 0, 0.3) 0px 4px 8px -8px;
+}
+
+.hide{
+    display: none;
+}
+.dropdown{
+    position: absolute;
+    background: #E3FDFD;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 8px 24px;
+    width: 215px;
+    top: 70px;
+    right: 0px;
+    border-radius: 10px;
+    transition: transform 0.6s ease-in;
+   
+}
+.dropdown ul{
+    list-style-type: none;
+}
+.username{
+    font-weight: 500;
+    font-size: 1.1rem;
+    padding-left: 8px;
+}
+.dropdown ul li{
+    padding: 20px;
+    border-bottom: 0.2px solid #94d4ff;
 }
 
 #perfect{
