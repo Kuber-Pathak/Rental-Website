@@ -51,22 +51,76 @@
               <p>All the fields with * are mandotary</p>
             </div>
 
-            <div class="property-box">
-              <div class="property-details">
+            <div class="column-box">
+              <div class="column-details">
                 <span class="form-number">1.</span>
                 <h2>Choose Your Property Type:</h2>
               </div>
             </div>
             <div class="property-option">
-              <input type="radio" name="" id="" />
-              <label for="">Resident Property</label>
-              <input type="radio" name="" id="" />
-              <label for="">Commercial Property</label>
+              <div class="form-check">
+                <input type="radio" name="Property" id="Property1" />
+                <label for="Property1">Resident Property</label>
+              </div>
+              <div class="form-check">
+                <input type="radio" name="Property" id="Property2" />
+                <label for="Property2">Commercial Property</label>
+              </div>
             </div>
-
-            <div class="basic-details">
-              <div class="basic-title"></div>
-              <div class="basic-options"></div>
+            <div class="column-box">
+              <div class="column-details">
+                <span class="form-number">2.</span>
+                <h2>Basic Detials:</h2>
+              </div>
+            </div>
+            <div class="basic-form">
+              <div class="row">
+                <div class="basic-col1">
+                  <div class="basic-purpose">
+                    <select class="form-select" name="" id="">
+                      <option value="1">Rent</option>
+                      <option value="2">Sale</option>
+                      <option value="3">Lease</option>
+                      <option value="5">Paying Guest</option>
+                    </select>
+                    <label for="purpose"
+                      >Purpose
+                      <span class="text-danger">*</span>
+                    </label>
+                  </div>
+                </div>
+                <div class="basic-col2">
+                  <div class="basic-purpose">
+                    <input type="text" class="form-control
+                    placeholder="123-45-678" />
+                    <label for="purpose"
+                      >Your Title
+                      <span class="text-danger">*</span>
+                    </label>
+                  </div>
+                </div>
+                <div class="basic-col3">
+                  <div class="basic-purpose">
+                    <select class="form-select" name="" id="">
+                      <option value disabled selected>Select option</option>
+                      <option value="1">Single room</option>
+                      <option value="5">Two rooms</option>
+                      <option value="2">1BHK</option>
+                      <option value="3">2BHK</option>
+                      <option value="5">3BHK</option>
+                      <option value="5">Flat</option>
+                      <option value="5">Shutter</option>
+                      <option value="5">Shop</option>
+                      <option value="5">Office space</option>
+                      <option value="5">Warehouse/Godown</option>
+                    </select>
+                    <label for="purpose"
+                      >Category
+                      <span class="text-danger">*</span>
+                    </label>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </form>
