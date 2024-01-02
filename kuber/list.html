@@ -59,11 +59,23 @@
             </div>
             <div class="property-option">
               <div class="form-check">
-                <input type="radio" name="Property" id="Property1" />
+                <input
+                  type="radio"
+                  name="Property"
+                  value="residental"
+                  id="Property1"
+                  onchange="updatePropertyOptions()"
+                />
                 <label for="Property1">Resident Property</label>
               </div>
               <div class="form-check">
-                <input type="radio" name="Property" id="Property2" />
+                <input
+                  type="radio"
+                  name="Property"
+                  value="commercial"
+                  id="Property2"
+                  onchange="updatePropertyOptions()"
+                />
                 <label for="Property2">Commercial Property</label>
               </div>
             </div>
@@ -81,7 +93,7 @@
                       <option value="1">Rent</option>
                       <option value="2">Sale</option>
                       <option value="3">Lease</option>
-                      <option value="5">Paying Guest</option>
+                      <option value="4">Paying Guest</option>
                     </select>
                     <label for="purpose"
                       >Purpose
@@ -101,18 +113,10 @@
                 </div>
                 <div class="basic-col3">
                   <div class="basic-purpose">
-                    <select class="form-select" name="" id="">
-                      <option value disabled selected>Select option</option>
-                      <option value="1">Single room</option>
-                      <option value="5">Two rooms</option>
-                      <option value="2">1BHK</option>
-                      <option value="3">2BHK</option>
-                      <option value="5">3BHK</option>
-                      <option value="5">Flat</option>
-                      <option value="5">Shutter</option>
-                      <option value="5">Shop</option>
-                      <option value="5">Office space</option>
-                      <option value="5">Warehouse/Godown</option>
+                    <select class="form-select" name="" id="Category" disabled>
+                      <option value disabled selected>
+                        Select Property Type first.
+                      </option>
                     </select>
                     <label for="purpose"
                       >Category

@@ -237,10 +237,11 @@ ul li a:hover{
     font-weight: 600;
 } 
 
-form-control:not(:placeholder-shown){
+/* form-control:not(:placeholder-shown){
     padding-top: 1.625rem;
     padding-bottom: 0.625rem
-}
+} */
+
 .form-select~label {
     opacity: .65;
     position: absolute;
@@ -274,7 +275,7 @@ form-control:not(:placeholder-shown){
     position: absolute;
     font-size: 0.85rem;
     top: -5px;
-    left: 0;
+    left: -3px;
     height: 100%;
     padding: 0rem 0.85rem;
     border: 1px solid transparent;
