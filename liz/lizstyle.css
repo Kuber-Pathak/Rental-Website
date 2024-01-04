@@ -159,7 +159,7 @@ ul li a:hover{
 }
 
 #slogan{
-   margin-top: 60px;
+   margin-top: 80px;
    margin-left: 10px;
    max-width: 1250px;
    margin-right: auto;
@@ -191,9 +191,67 @@ ul li a:hover{
     padding-top: 30px;
 }
 
-#location {
-    padding: 20px 300px 20px 10px;
+
+.search-bar {
+    border: solid black;
+    margin-top: 10px;
+    position: absolute;
+    width: auto;
+    border-radius: 30px;
+    background-color: white;
+    padding: 20px 10px 20px 10px;
     border-width: 1px ;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 8px 8px -4px, rgba(0, 0, 0, 0.3) 0px 4px 8px -8px;
     border-radius: 10px;
+}
+
+    
+
+
+.search-input {
+    border: white;
+    margin-left: 0px;
+    width: 300px;
+
+
+}
+.room-made{
+    border-radius: 50px;
+    background-color: white;
+    margin-top: 50px;
+    justify-content: right;
+    padding: 60px 10px 60px 10px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 8px 8px -4px, rgba(0, 0, 0, 0.3) 0px 4px 8px -8px;
+
+
+}
+h1,h2 {
+    text-align: center;
+    
+}
+h1 {
+    letter-spacing: 4px;
+}
+
+.upper {
+    display: flex;
+    justify-content: space-around;
+
+}
+.image1  {
+    border-radius: 0px 60px 0px 60px;
+    width: 500px;
+    height: 300px;
+}
+
+.image2 {
+    border-radius:  60px 0px 60px 0px;
+    width: 500px;
+    height: 300px;
+    
+}
+.image {
+    margin: 50px;
+    display: flex;
+    justify-content: space-evenly;
 }
