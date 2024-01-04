@@ -69,3 +69,5 @@ function addOption(selectElement, value, text, disabled, selected) {
   option.selected = selected;
   selectElement.add(option);
 }
+
+//For Location finder
