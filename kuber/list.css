@@ -22,6 +22,7 @@ input[type="date"], input[type="text"], input[type="tel"], input[type="email"], 
     border-bottom: 2px solid #b9b8b8;
     width: 100%;
     outline: none;
+    background-color: #fff;
 }
 
 h4{
@@ -62,7 +63,7 @@ header{
     min-height: 60px;
 }
 #navbar{
-    background-color: #E3FDFD;
+    background-color: #edf6f9;
     position: fixed;
     z-index: 99;
     top: 0;
@@ -184,7 +185,7 @@ ul li a:hover{
     margin-bottom: 1.5rem 
 }
 .form-number{
-    background-color: #8aa6e2;
+    background-color: #83c5be;
     padding: 5px 20px;
     border-radius: 4px;
     color: #ffff;
@@ -215,13 +216,15 @@ ul li a:hover{
     padding: 20px 10px;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 8px 8px -4px, rgba(0, 0, 0, 0.3) 0px 4px 8px;
     margin-bottom: 30px;
+    background-color: #fff;
 }
 .basic-form{
     width: 100%;
     padding: 30px;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 8px 8px -4px, rgba(0, 0, 0, 0.3) 0px 4px 8px;
     margin-bottom: 30px;
-    border-radius: 8px
+    border-radius: 8px;
+    background-color: #fff;
 }
 .basic-col1{
     flex: 0 0 auto;
@@ -241,7 +244,7 @@ ul li a:hover{
     width: 100%;
     padding: 0.375rem 2.25rem 0.375rem 0.75rem;
     color: #212529;
-    background-color: #CBF1F5;;
+   
     height: 50px;
     font-weight: 600;
 } 
@@ -312,7 +315,7 @@ ul li a:hover{
 
 #main_image{
     font-size: 16px;
-    background: #E3FDFD;
+    background: #fff;
     border-radius: 50px;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 8px 8px -4px , rgba(0, 0, 0, 0.3) 0px 4px 8px -8px;
     width: 100%; /*350px*/
@@ -322,7 +325,7 @@ ul li a:hover{
 }
 ::-webkit-file-upload-button{
     color: #fff;
-    background: #8aa6e2;
+    background: #83c5be;
     padding: 20px;
     border: none;
     border-radius:50px ;

@@ -11,6 +11,9 @@ img{
     overflow-clip-margin: content-box;
     overflow: clip;
 }
+input{
+    outline: none;
+}
 h4{
     
     font-size: 1.5rem;
@@ -176,6 +179,7 @@ ul li a:hover{
     
 }
 .location-search{
+    /* background-color: #fff; */
     padding: 0.8rem 1.25rem 1rem;
     border: 1px solid rgba(0, 0,0, .325);
     display: flex;
@@ -205,6 +209,7 @@ ul li a:hover{
     font-size: 14px;
 }
 .price-search{
+
     border: 1px solid rgba(0, 0,0, .325);;
     padding: 0.2rem 1.25rem 1rem;
     margin-bottom: 20px;
@@ -316,15 +321,15 @@ ul li a:hover{
     bottom: 0;
     padding: 10px;
     cursor: pointer;
-    background-color: #3bc0e9;
+    background-color:  #83c5be;
     color: #fff;
     border-radius: 5px;
     border: 1px #3accf9 solid;
     width: 100%;
 }
 .filter-button:hover{
-    background-color: #fff;
-    color: black;
+    background-color: #8aa6e2cb;
+    
 }
 .room-container{
     margin-top: 1.5rem; 
@@ -368,8 +373,8 @@ ul li a:hover{
     padding: 0 10px;
 }
 .room-content{
-    /* background-color: #fff; */
-    background-color: rgb(227, 253, 255);
+    background-color: #fff;
+    /* background-color: rgb(227, 253, 255); */
     border-radius: 30px;
     border: 1px #eee solid;
     box-shadow: 0 0 7px rgba(196, 196, 196, 0.316);
