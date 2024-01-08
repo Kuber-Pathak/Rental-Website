@@ -274,7 +274,7 @@ ul li a:hover{
 .image1  {
     border-radius: 0px 60px 0px 60px;
     width: calc(50% - 10px);
-    height: 300px;
+    height: 230px;
     background: url("find.jpeg");
     background-size: cover;
 }
@@ -282,7 +282,7 @@ ul li a:hover{
 .image2 {
     border-radius:  60px 0px 60px 0px;
     width: calc(50% - 10px);
-    height: 300px;
+    height: 230px;
     background: url("img2.jpg");
     background-size: cover;
     
