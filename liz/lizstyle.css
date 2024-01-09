@@ -247,28 +247,34 @@ ul li a:hover{
 }
 .room-made{
     margin-top: 15px;
+    margin-right:40px ;
     display: flex;
     flex-direction: column;
     justify-content: center;
     border-radius: 100px;
-    background-color: white;
+    /* background-color: #edf6f9; */
     text-align: center;
     box-shadow: 0 2px 9px 0 rgba(0,0,0,.5);
     height: 463px;
     width: 70%;
     min-width: 345px;
 }
-.room-slogan{
 
+.room-slogan-top{
+    font-size: 2.35rem;
+    
 }
 
+.room-slogan-bottom{
+    font-size: 1.5rem;
+    line-height: 2rem;
+}
 
-.upper {
+.upper{
     padding-top: 80px;
     width: 100%;
     display: flex;
     justify-content: space-between;
-
 }
 
 .image1  {
