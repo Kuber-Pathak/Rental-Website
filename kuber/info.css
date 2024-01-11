@@ -22,13 +22,13 @@ h1,h2,h3,h4,h5,h6{
     line-height: 1.2;
 }
 body{
-    background-color: #CBF1F5;
+    /* background-color: #CBF1F5; */
 }
 li{
     list-style-type: none;
 }
 .active{
-    background-color: lightgrey; ;
+    background-color: lightgrey; 
 }
 .center{
     max-width: 1250px;
@@ -41,7 +41,7 @@ li{
     /* padding:10px 0px; */
     border: 2px solid #333;
     border-radius: 8px;
-    background-color: #E3FDFD;
+    /* background-color: #E3FDFD; */
 
 }
 header{
@@ -51,14 +51,15 @@ header{
     min-height: 60px;
 }
 #navbar{
-    background-color: #E3FDFD;
+    background-color: #fff;
+    box-shadow: 0 2px 9px 0 rgba(0,0,0,.15);
     position: fixed;
     z-index: 99;
     top: 0;
     width: 100%;
 }
 .sticky{
-    box-shadow: 0 2px 9px 0 rgba(0,0,0,.15);
+    
     z-index: 99;
 }
 nav{
@@ -255,5 +256,69 @@ ul li a:hover{
 #map{
     margin-top: 16px;
     border-radius: 30px;
-    height: 335px;
+    height: 300px;
+}
+.message-form{
+    width: 100%;
+    border-radius: 6px;
+    border: 1px solid #dbdbdb;
+    padding: 20px;
+}
+.profile-image{
+    display: flex;
+    justify-content: flex-start;
+}
+.profile-image img{
+    cursor: pointer;
+    height: 45px;
+    width: 45px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+.user-info{
+    display: flex;
+    align-items: center;
+    color: #727272;
+    font-size: 16px;
+    letter-spacing: 0;
+    margin-left: 12px;
+}
+.message-container{
+    color: #333;
+    font-size: 16px;
+    letter-spacing: 0;
+    text-align: center;
+}
+
+.message-box{
+    margin: 24px 0 0;
+    width: 100%;
+}
+.message-box textarea{
+    height: 116px;
+    padding: 24px;
+    border-radius: 6px;
+    border: 1px solid #dbdbdb;
+    margin-bottom: 24px;
+    resize: none;
+    outline: none;
+}
+.message-btn ,.book-btn{
+    width: 100%;
+    height: 50px;
+    color: #fff;
+    font-size: 1rem;
+    background-color: #417054;
+    border: 1px solid #417054;
+    transition: color,background .3s ease-in-out;
+    border-radius: 30px;
+    max-width: 290px;
+    cursor: pointer;
+}
+
+.message-btn:hover{
+    background-color: rgba(42, 79, 57, 0.948);;
+}
+.book-btn:hover{
+    background-color: rgba(42, 79, 57, 0.948);
 }
