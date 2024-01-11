@@ -11,6 +11,10 @@ img{
     overflow-clip-margin: content-box;
     overflow: clip;
 }
+a{
+    text-decoration: none;
+    color: black;
+}
 label{
     cursor: pointer;
     display: block;
