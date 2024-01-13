@@ -19,7 +19,7 @@ document.querySelector(".left-side").addEventListener("click", () => {
   }
 });
 //for latitude and lngitude
-var Location = "Balkumari";
+var Location = "balkumari";
 document.addEventListener(onload, findAddress());
 
 function findAddress() {
