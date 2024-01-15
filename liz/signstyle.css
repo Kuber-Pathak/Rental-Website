@@ -624,8 +624,8 @@ transform: rotateY(180deg);
   border-radius: 50px;
   border-style: none;
   color: white;
-  background: black;
-  opacity: 50%;
+  background: rgba(0, 0, 0, 0.604);
+  /* opacity: 50%; */
   transition-duration: 1000ms;
 
  
