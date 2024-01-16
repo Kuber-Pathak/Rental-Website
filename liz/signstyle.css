@@ -536,23 +536,28 @@ transform: rotateY(180deg);
   flex-direction: column;
 }
 
-
 .search{
   border-style: none;
   padding: 2px;
   background-color: rgba(177, 168, 168, 0);
-  
+  margin: 15px 0px 15px 20px;
+  height: 100%;
+  width: 100%;
 }
 
 
 
 .searchbar{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
   
   background-color: rgba(177, 168, 168, 0.411);;
   margin: 0px 0px 20px 0px ;
   border-radius: 10px;
   width: 100%;
-  padding: 15px 50px 15px 20px;
+  padding: 0px 0px 0px 20px;
+  
 }
 
 .loginicon{
@@ -641,7 +646,7 @@ button:hover {
 .header{
   color: mediumpurple;
 }
-@media screen and (max-width: 1100px) {
+@media screen and (max-width: 1250px) {
 
 
   .container {
