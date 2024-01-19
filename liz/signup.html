@@ -1,151 +1,172 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>Sign up</title>
-    <link rel = "stylesheet" href="signstyle.css" >
+    <link rel="stylesheet" href="signstyle.css">
     <script src="https://kit.fontawesome.com/5a78363638.js" crossorigin="anonymous"></script>
+
 <body>
-<div class="container">
-	<div class="red-box" id="targetd">
-        <div class="signin">
-            <div class="center">
-                <h1 class="header"> Sign Up</h1>
-                <div class="loginoption">
-                    <div class="loginicon">
-                        <a href = "#"><i class="fa-brands fa-facebook-f fa-xl"></i>
-                     </a>
+    <!-- added form  -->
+    <form action="">
+        <div class="container">
+            <div class="red-box" id="targetd">
+                <div class="signin">
+                    <div class="center">
+                        <h1 class="header"> Sign Up</h1>
+                        <div class="loginoption">
+                            <div class="loginicon">
+                                <a href="#"><i class="fa-brands fa-facebook-f fa-xl"></i>
+                                </a>
+                            </div>
+                            <div class="loginicon">
+                                <a href="#"> <i class="fa-brands fa-google-plus-g fa-xl"></i>
+                                </a>
+                            </div>
+                            <div class="loginicon">
+                                <a href="#"> <i class="fa-brands fa-linkedin-in fa-xl"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <h4> or use your email</h4>
+
                     </div>
-                    <div class="loginicon">
-                      <a href = "#"> <i class="fa-brands fa-google-plus-g fa-xl"></i>
-                       </a>
+                    <div class="center">
+                        <div class="two">
+                            <div class="searchbar">
+                                <i class="fa-regular fa-envelope fa-xl"></i>
+                                <input class="nameid search" name="fname" id="name" type="text"
+                                    placeholder="First Name" />
+
+                            </div>
+                            <div class="searchbar">
+                                <i class="fa-regular fa-envelope fa-xl"></i>
+                                <input class="nameid search" id="name" name="lname" type="text"
+                                    placeholder="Last Name" />
+
+                            </div>
+                        </div>
+
+                        <div class="one">
+                            <div class="searchbar">
+                                <i class="fa-regular fa-envelope fa-xl"></i>
+                                <input class="emailid search" id="email" name="email" type="text" placeholder="Email" />
+
+                            </div>
+                        </div>
+                        <div class="two">
+                            <div class="searchbar">
+                                <i class="fa-regular fa-lock fa-xl"></i>
+                                <input class="passwordid search" id="password" name="password" type="password"
+                                    placeholder="password" />
+                            </div>
+
+                            <div class="searchbar">
+                                <i class="fa-regular fa-lock fa-xl"></i>
+                                <input class="passwordid search" id="password" name="cpassword" type="password"
+                                    placeholder="Confirm Password" />
+                            </div>
+                        </div>
+                        <div class="two">
+                            <div class="searchbar">
+                                <label for="birthDate">DOB:</label>
+                                <input class="nameid search" id="birthDate" name="birthDate" type="date" />
+
+                            </div>
+                            <div class="searchbar">
+                                Gender
+                                <input class="nameid search" value="male" name="gender" id="male" type="radio" />
+                                <label for="male"> Male</label>
+                                <input class="nameid search" value="female" name="gender" id="female" type="radio" />
+                                <label for="female"> Female</label>
+
+
+                            </div>
+                        </div>
+                        <div class="center">
+
+                            <button name="submitUp" class="button">
+                                <h2>SIGN UP</h2>
+                            </button>
+                        </div>
+                        <div class="mediaup" onclick="dubanimation()"> Sign In </div>
                     </div>
-                    <div class="loginicon">
-                      <a href = "#">  <i class="fa-brands fa-linkedin-in fa-xl"></i>
-                        </a>
-                    </div>
+
+
                 </div>
-                 <h4> or use your email</h4>
-          
-          </div>
-          <div class="center">
-              <div class="two">
-                  <div class="searchbar">
-                  <i class="fa-regular fa-envelope fa-xl"></i>
-                  <input class="nameid search" id="name" type="text" placeholder="First Name"/>
-                  
-              </div>
-              <div class="searchbar">
-                  <i class="fa-regular fa-envelope fa-xl"></i>
-                  <input class="nameid search" id="name" type="text" placeholder="Last Name"/>
-                  
-              </div>
-              </div>
-  
-              <div class="one">
-                  <div class="searchbar">
-                      <i class="fa-regular fa-envelope fa-xl"></i>
-                      <input class="emailid search" id="email" type="text" placeholder="Email"/>
-                  
-                  </div>
-                  <div class="searchbar">
-                      <i class="fa-regular fa-lock fa-xl"></i>
-                      <input class="passwordid search" id="password" type="password" placeholder="password"/>
-              </div>
-              </div>
-              <div class="two">
-                  <div class="searchbar">
-                      <i class="fa-regular fa-calendar fa-xl"></i>
-                  
-                  <input class="nameid search" id="name" type="datetime" placeholder="Date of Birth"/>
-                  
-              </div>
-              <div class="searchbar">
-                  gender
-                  <input class="nameid search" id="name" type="radio" />
-                  <label for="male">male</label>
-                  <input class="nameid search" id="name" type="radio" />
-                  <label for="female">female</label>
-                  
-                  
-              </div>
-              </div>
-              <div class="center">
-                  
-                  <button class="button"><h2>SIGN UP</h2></button>
-              </div>
-             <div class="mediaup" onclick="dubanimation()" > Sign In </div>
-          </div>
-  
-  
-        </div>
-    </div>
-  <div class="gray-box" id="targeta">
-      <div class="signin">
-          <div class="center">
-              <h1 class="header"> Sign in</h1>
-              <div class="loginoption">
-                  <div class="loginicon">
-                      <a href = "#"><i class="fa-brands fa-facebook-f fa-xl"></i>
-                   </a>
-                  </div>
-                  <div class="loginicon">
-                    <a href = "#"> <i class="fa-brands fa-google-plus-g fa-xl"></i>
-                     </a>
-                  </div>
-                  <div class="loginicon">
-                    <a href = "#">  <i class="fa-brands fa-linkedin-in fa-xl"></i>
-                      </a>
-                  </div>
-              </div>
-               <h4> or use your email</h4>
-        
-        </div>
-        <div class="center">
-            <div class="searchbar">
-                <i class="fa-regular fa-envelope fa-xl"></i>
-                <input class="emailid search" id="email" type="email" placeholder="Email"/>
-                
             </div>
-            <div class="searchbar">
-                <i class="fa-regular fa-lock fa-xl"></i>
-                <input class="passwordid search" id="password" type="password" placeholder="password"/>
-            </div>
-            <div class="center">
-                <a href="#"><u>Forgot your password?</u></a>
-                <button class="button"><h2>SIGN IN</h2></button>
-            </div>
-           <div class="mediaup" onclick="subanimation()" > Sign Up </div>
-        </div>
+            <div class="gray-box" id="targeta">
+                <div class="signin">
+                    <div class="center">
+                        <h1 class="header"> Sign in</h1>
+                        <div class="loginoption">
+                            <div class="loginicon">
+                                <a href="#"><i class="fa-brands fa-facebook-f fa-xl"></i>
+                                </a>
+                            </div>
+                            <div class="loginicon">
+                                <a href="#"> <i class="fa-brands fa-google-plus-g fa-xl"></i>
+                                </a>
+                            </div>
+                            <div class="loginicon">
+                                <a href="#"> <i class="fa-brands fa-linkedin-in fa-xl"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <h4> or use your email</h4>
+
+                    </div>
+                    <div class="center">
+                        <div class="searchbar">
+                            <i class="fa-regular fa-envelope fa-xl"></i>
+                            <input class="emailid search" id="email" type="email" placeholder="Email" />
+
+                        </div>
+                        <div class="searchbar">
+                            <i class="fa-regular fa-lock fa-xl"></i>
+                            <input class="passwordid search" id="password" type="password" placeholder="password" />
+                        </div>
+                        <div class="center">
+                            <a href="#"><u>Forgot your password?</u></a>
+                            <button class="button">
+                                <h2>SIGN IN</h2>
+                            </button>
+                        </div>
+                        <div class="mediaup" onclick="subanimation()"> Sign Up </div>
+                    </div>
 
 
-      </div>
-  </div>
-  
-  <div class="green-box" id="targetc">
-      <div class="center">
-          <div class="signup">
-              <h1 class="title">Welcome</h1>
-              <h2 class="subtitle">Start Your Journey<br> with Roomie</h2>
-          </div>
-          <button class="butt" onclick="DoAnimation();">
-              <h2>SIGN UP</h2>
-          </button>
-      </div>    
-  </div>
+                </div>
+            </div>
 
-  <div class="black-box" id="targetb">
-      <div class="center">
-          <div class="signup">
-              <h1 class="title">Welcome Back!</h1>
-              <h2 class="subtitle">Enter personal details<br>to your account</h2>
-          </div>
-          <button class="butt" onclick="RevAnimation();">
-              <h2>SIGN IN</h2>
-          </button>
-      </div>    
-  </div>
-</div>
-<script src="signup.js"></script>
+            <div class="green-box" id="targetc">
+                <div class="center">
+                    <div class="signup">
+                        <h1 class="title">Welcome</h1>
+                        <h2 class="subtitle">Start Your Journey<br> with Roomie</h2>
+                    </div>
+                    <button class="butt" onclick="DoAnimation();">
+                        <h2>SIGN UP</h2>
+                    </button>
+                </div>
+            </div>
+
+            <div class="black-box" id="targetb">
+                <div class="center">
+                    <div class="signup">
+                        <h1 class="title">Welcome Back!</h1>
+                        <h2 class="subtitle">Enter personal details<br>to your account</h2>
+                    </div>
+                    <button class="butt" onclick="RevAnimation();">
+                        <h2>SIGN IN</h2>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </form>
+
+    <script src="signup.js"></script>
 
 </body>
+
 </html>
