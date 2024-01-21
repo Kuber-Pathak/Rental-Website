@@ -1,0 +1,250 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif;
+    font-size:16px;
+}
+img{
+    max-width: 100%;
+    vertical-align: middle;
+    overflow-clip-margin: content-box;
+    overflow: clip;
+}
+a{
+    text-decoration: none;
+    color: black;
+}
+label{
+    cursor: pointer;
+    display: block;
+    margin-bottom: 0.4rem;
+}
+input{
+    outline: none;
+}
+
+h4{
+    
+    font-size: 1.5rem;
+}
+h2{
+    padding: 10px 0 ;
+    /* font-weight: 500; */
+}
+body{
+    /* background-color: #CBF1F5; */
+}
+li{
+    list-style-type: none;
+}
+.active{
+    background-color: lightgrey; ;
+}
+.center{
+    max-width: 1350px;
+    margin: 0 auto ;
+}
+.btn{
+    width: 138px;
+    height: 45px;
+    /* padding:10px 0px; */
+    border: 2px solid #333;
+    border-radius: 8px;
+    background-color: #E3FDFD;
+
+}
+header{
+    width: 100%;
+    max-height: 126px;
+    z-index: 100;
+    min-height: 60px;
+}
+#navbar{
+    background-color: #fff;
+    box-shadow: 0 2px 9px 0 rgba(0,0,0,.15);
+    position: fixed;
+    z-index: 99;
+    top: 0;
+    width: 100%;
+    padding: 0 18px;
+}
+.sticky{
+    
+    z-index: 99;
+}
+nav{
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 1350px;
+    margin: 0 auto ;
+    
+}
+nav ul li{
+    list-style-type: none;
+}
+nav ul li a{
+    font-size: 1rem;
+    font-weight: 550;
+}
+nav ul li a:hover{
+    text-decoration: underline;
+}
+
+.left-side {
+    color: black;
+    position: relative;
+    
+
+}
+.left-btn{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: black;
+    text-decoration: none;
+    
+}
+.left-btn:hover{
+    background-color: #7884b8;
+    color: #fff;
+    transition: 0.5s ease-in-out;
+}
+.user-menu{
+    /* margin-right: 10px; */
+    cursor: pointer;
+}
+.user-content{
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 8px 8px -4px, rgba(0, 0, 0, 0.3) 0px 4px 8px -8px;
+    border: 1px solid #b9b8b8;;
+    padding:8px 8px 8px 16px;
+    border-radius: 30px;
+    cursor: pointer;
+   
+}
+.user-content:hover{
+    box-shadow: rgba(77, 77, 89, 0.2) 0px 8px 8px -4px, rgba(55, 55, 55, 0.5) 0px 4px 8px -8px;
+}
+.user-profile{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap :14px;
+
+}
+.hide{
+    display: none;
+}
+.dropdown{
+    position: absolute;
+    background: #E3FDFD;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 8px 24px;
+    width: 215px;
+    top: 70px;
+    right: 0px;
+    border-radius: 10px;
+    transition: transform 0.6s ease-in;
+   
+}
+.dropdown ul{
+    list-style-type: none;
+}
+.username{
+    background: black;
+    color: #eeeeee;
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    font-weight: 500;
+    font-size: 14px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.dropdown ul li{
+    padding: 20px;
+    border-bottom: 0.2px solid #94d4ff;
+}
+.container{
+    margin-top: 50px;
+}
+.main-container{}
+.row{
+    display: flex;
+    flex-wrap: wrap;
+}
+.row>*{
+    flex-shrink: 0;
+    width: 100%;
+    max-width: 100%;
+    padding-right: calc(1rem * .5);
+    padding-left: calc(1rem* .5);
+}
+.left-column{
+    flex:0 0 auto;
+    width: 25%;
+}
+.left-data{
+  
+}
+.user-data{
+    background: #fff;
+    border-radius: 25px;
+    padding: 32px 24px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0,0.2);
+}
+.user-info{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+.user-photo{
+    background: black;
+    color: #eeeeee;
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    font-weight: 600;
+    font-size: 3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 6px 20px rgba(0, 0, 0,0.2);
+}
+.user-name{
+    font-size: 31.9px;
+    line-height: 36.2799px;
+    letter-spacing: 0px;
+    text-transform: capitalize;
+    font-weight: 600;
+}
+.dashboard{
+    margin-top: 32px;
+    border: 1px solid #dddddd;
+    border-radius: 16px;
+}
+.dashboard-menu{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding: 15px 15px;
+}
+.dashboard-menu li{
+    background-color: rgba(194, 235, 251, 0.647);
+    border-radius:15px;
+}
+.dashboard-menu li a{
+    display: flex;
+    padding: 15px;
+    justify-content: space-between;
+    font-size: 1rem;
+    font-weight: 550;
+}
+.dashboard-menu li:hover{
+    background-color:rgba(152, 220, 244, 0.809);    
+}

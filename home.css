@@ -79,12 +79,14 @@ nav{
     justify-content: space-between;
     align-items: center;
     width: 100%;
+    max-width: 1350px;
+    margin: 0 auto ;
     
 }
-.middle-side{
-    display: flex;
-    gap: 10vw;
+.logo{
+ 
 }
+
 ul li{
     list-style-type: none;
 }
@@ -99,9 +101,9 @@ ul li a:hover{
 }
 
 .left-side {
-    /* margin: 16px; */
     color: black;
     position: relative;
+    
 
 }
 .left-btn{
@@ -122,15 +124,23 @@ ul li a:hover{
     cursor: pointer;
 }
 .user-content{
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 8px 8px -4px, rgba(0, 0, 0, 0.3) 0px 4px 8px -8px;
     border: 1px solid #b9b8b8;;
-    padding: 16px;
+    padding:8px 8px 8px 16px;
     border-radius: 30px;
     cursor: pointer;
+   
 }
 .user-content:hover{
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 8px 8px -4px, rgba(0, 0, 0, 0.3) 0px 4px 8px -8px;
+    box-shadow: rgba(77, 77, 89, 0.2) 0px 8px 8px -4px, rgba(55, 55, 55, 0.5) 0px 4px 8px -8px;
 }
+.user-profile{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap :14px;
 
+}
 .hide{
     display: none;
 }
@@ -149,9 +159,16 @@ ul li a:hover{
     list-style-type: none;
 }
 .username{
+    background: black;
+    color: #eeeeee;
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
     font-weight: 500;
-    font-size: 1.1rem;
-    padding-left: 8px;
+    font-size: 14px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .dropdown ul li{
     padding: 20px;
@@ -224,8 +241,15 @@ ul li a:hover{
 }
 #small-arrow{
     position: absolute;
-    top: 35px;
-    right: 20px;
+    top: 0px;
+    right: 0px;
+    height: 72px;
+    width: 70px;
+    padding: 0 20px;
+    background: #fff;
+    border: 1px solid #333;
+    border-radius: 0 8px 8px 0px;
+    border-left: 0;
 }
 #small-location{
     position: absolute;
@@ -233,7 +257,7 @@ ul li a:hover{
     left: 20px;
 }
 .row{
-    max-width: 92%;
+    max-width: 100%;
     padding: 0 10px;
     margin: 0 auto;
 }

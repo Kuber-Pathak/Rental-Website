@@ -14,14 +14,22 @@ option_labels.forEach((option_label) => {
 
 let Dropdown = document.querySelector(".dropdown");
 Dropdown.classList.toggle("hide");
-let user = document.querySelector(".user-content");
 document.querySelector(".left-side").addEventListener("click", () => {
   if (Dropdown.classList.contains("hide")) {
     Dropdown.classList.toggle("hide");
-    user.style["boxShadow"] =
-      "rgba(50, 50, 93, 0.25) 0px 8px 8px -4px, rgba(0, 0, 0, 0.3) 0px 4px 8px -8px";
   } else {
-    user.style["boxShadow"] = "";
     Dropdown.classList.toggle("hide");
   }
 });
+
+//validation code
+function validateForm(location) {
+  const pass_rgex = "/^[A-Za-z]+$/";
+  if (location.value.match(pass_rgex)) {
+    return true;
+  } else {
+    document.querySelector("#format").innerHTML =
+      " * Location must be in alphabets";
+    return false;
+  }
+}

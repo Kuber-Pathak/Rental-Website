@@ -21,8 +21,8 @@ document.querySelector(".left-side").addEventListener("click", () => {
 
 //for options
 function updatePropertyOptions() {
-  var propoertyRadios = document.getElementsByName("Property");
-  var categoryTypeSelect = document.getElementById("Category");
+  var propoertyRadios = document.getElementsByName("property");
+  var categoryTypeSelect = document.getElementById("category");
   // var submitButton = document.querySelector('input[type="submit"]');
 
   // Find the selected category
@@ -43,18 +43,18 @@ function updatePropertyOptions() {
   // Add options based on the selected category
   if (selectedProperty === "residental") {
     addOption(categoryTypeSelect, "", "Select Option", true, true);
-    addOption(categoryTypeSelect, "5", "1BHK");
-    addOption(categoryTypeSelect, "6", "2BHK");
-    addOption(categoryTypeSelect, "7", "3BHK");
-    addOption(categoryTypeSelect, "8", "Flat");
-    addOption(categoryTypeSelect, "9", "Singlse room");
-    addOption(categoryTypeSelect, "10", "Two rooms");
+    addOption(categoryTypeSelect, "1BHK", "1BHK");
+    addOption(categoryTypeSelect, "2BHK", "2BHK");
+    addOption(categoryTypeSelect, "3BHK", "3BHK");
+    addOption(categoryTypeSelect, "Flat", "Flat");
+    addOption(categoryTypeSelect, "Single room", "Single room");
+    addOption(categoryTypeSelect, "Two rooms", "Two rooms");
   } else if (selectedProperty === "commercial") {
     addOption(categoryTypeSelect, "", "Select Option", true, true);
-    addOption(categoryTypeSelect, "11", "Shutter");
-    addOption(categoryTypeSelect, "12", "Shop");
-    addOption(categoryTypeSelect, "13", "Office space");
-    addOption(categoryTypeSelect, "14", "Warehouse/Godown");
+    addOption(categoryTypeSelect, "Shutter", "Shutter");
+    addOption(categoryTypeSelect, "Shop", "Shop");
+    addOption(categoryTypeSelect, "Office space", "Office space");
+    addOption(categoryTypeSelect, "Warehouse/Godown", "Warehouse/Godown");
   }
 
   // Enable or disable the submit button based on category selection
@@ -70,4 +70,19 @@ function addOption(selectElement, value, text, disabled, selected) {
   selectElement.add(option);
 }
 
-//For Location finder
+//For Date of build
+var currentDate = new Date();
+var selectDate = document.getElementById("date_of_build");
+
+for (var i = 0; i <= 20; i++) {
+  var yearOption = currentDate.getFullYear() - i;
+  var option = document.createElement("option");
+  option.value = yearOption;
+  option.text = yearOption;
+  selectDate.add(option);
+}
+
+//For confirmation
+function showConfirmation() {
+  return confirm("Are you sure you want to submit?");
+}

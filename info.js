@@ -19,10 +19,11 @@ document.querySelector(".left-side").addEventListener("click", () => {
   }
 });
 //for latitude and lngitude
-var Location = "Balkumari";
-document.addEventListener(onload, findAddress());
+// var Location = "Balkumari";
+// document.addEventListener(onload, findAddress());
 
-function findAddress() {
+function findAddress(Location) {
+  var location = Location;
   var url =
     "https://nominatim.openstreetmap.org/search?format=json&limit=3&q=" +
     Location;
@@ -87,4 +88,11 @@ function setAddress() {
   //     alert("Cannot get current location");
   //   }
   // }
+}
+//For confirmation
+function showBookConfirmation() {
+  return confirm("Are you sure you want to Book Now?");
+}
+function showMessageConfirmation() {
+  return confirm("Are you sure you want to Send Message?");
 }

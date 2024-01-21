@@ -111,15 +111,21 @@ ul li a:hover{
     cursor: pointer;
 }
 .user-content{
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 8px 8px -4px, rgba(0, 0, 0, 0.3) 0px 4px 8px -8px;
     border: 1px solid #b9b8b8;;
-    padding: 16px;
+    padding:8px 8px 8px 16px;
     border-radius: 30px;
     cursor: pointer;
 }
 .user-content:hover{
     box-shadow: rgba(50, 50, 93, 0.25) 0px 8px 8px -4px, rgba(0, 0, 0, 0.3) 0px 4px 8px -8px;
 }
-
+.user-profile{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap :14px;
+}
 .hide{
     display: none;
 }
@@ -138,9 +144,16 @@ ul li a:hover{
     list-style-type: none;
 }
 .username{
+    background: black;
+    color: #eeeeee;
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
     font-weight: 500;
-    font-size: 1.1rem;
-    padding-left: 8px;
+    font-size: 14px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .dropdown ul li{
     padding: 20px;
@@ -241,11 +254,13 @@ ul li a:hover{
     font-size: 18px;
     font-weight: 400;
     color: #1f3a54;
+    text-transform: capitalize;
 }
 .amenities-content{
     font-size: 15px;
     margin-top: 0.1rem;
     color: #f65104;
+    text-transform: capitalize;
 }
 .row h5{
     font-size: 18px;
@@ -302,6 +317,7 @@ ul li a:hover{
     margin-bottom: 24px;
     resize: none;
     outline: none;
+    width: 100%;
 }
 .message-btn ,.book-btn{
     width: 100%;

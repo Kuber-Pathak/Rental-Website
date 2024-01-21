@@ -14,6 +14,17 @@ img{
 input{
     outline: none;
 }
+input[type="number"]::-webkit-inner-spin-button,
+        input[type="number"]::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+input[type="number"] {
+    -moz-appearance: textfield;
+}
+a{
+    text-decoration: none;
+}
 h4{
     
     font-size: 1.5rem;
@@ -27,6 +38,9 @@ body{
 }
 li{
     list-style-type: none;
+}
+.small-text{
+    font-size: 14px;
 }
 .active{
     background-color: lightgrey; ;
@@ -112,15 +126,21 @@ ul li a:hover{
     cursor: pointer;
 }
 .user-content{
-    border: 1px solid #b9b8b8;;
-    padding: 16px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 8px 8px -4px, rgba(0, 0, 0, 0.3) 0px 4px 8px -8px;
+    border: 1px solid #b9b8b8;
+    padding: 8px 8px 8px 16px;
     border-radius: 30px;
     cursor: pointer;
 }
 .user-content:hover{
     box-shadow: rgba(50, 50, 93, 0.25) 0px 8px 8px -4px, rgba(0, 0, 0, 0.3) 0px 4px 8px -8px;
 }
-
+.user-profile{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 14px;
+}
 .hide{
     display: none;
 }
@@ -139,9 +159,16 @@ ul li a:hover{
     list-style-type: none;
 }
 .username{
+    background: black;
+    color: #eeeeee;
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
     font-weight: 500;
-    font-size: 1.1rem;
-    padding-left: 8px;
+    font-size: 14px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .dropdown ul li{
     padding: 20px;
@@ -308,7 +335,7 @@ ul li a:hover{
     border-color: #6899e3;
 }
 .form-check input:checked[type=checkbox] {
-    background-image: url("Images/ticket.png");
+    background-image: url("Images/tick.jpg");
     background-size:contain;
     background-repeat: no-repeat;
     background-position: center;
@@ -341,6 +368,9 @@ ul li a:hover{
 .room-title{
     display: flex;
     margin-bottom: 20px;
+    flex-direction: row-reverse;
+    justify-content: center;
+    align-items: center;
 }
 .room-result{
     width: 75%;
@@ -439,8 +469,39 @@ ul li a:hover{
     flex-direction: column;
     justify-content: center;
     border-right: 1px #cfcfcf solid;
-    overflow-y: hidden;
+    overflow-x: hidden;
     font-size: 14px;
+    gap: 5px;
+}
+.view_button{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    opacity: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.5s ease-in-out;
+}
+.room-img:hover{
+   
+    .view_button{
+        opacity: 1;
+    }
+}
+.view_button a{
+    text-decoration: none;
+    background-color: #417054;
+    color: #fff;
+    border: 0;
+    padding: 7px 25px;
+    border-radius: 15px;
+    margin-bottom: 1rem;
+    font-size: 12px;
+}
+.hide{
+    display: none;
 }
 .room-price{
     display: flex;
@@ -449,13 +510,14 @@ ul li a:hover{
     border-right: 1px #cfcfcf solid;
     overflow-x: hidden;
     font-size: 14px;
+    gap: 5px;
 }
 .room-fav{
     position: absolute;
     top: 10px;
     left: 15px;
     color: white;
-
+    cursor: pointer;
 }
 
 .room-page{
