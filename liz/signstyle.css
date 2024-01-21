@@ -24,7 +24,7 @@ a{
 .container  {
 display: grid;
 grid-template-columns:23% 25% 4% 25% 23%;
-grid-template-rows: 5% 5% 80% 5% 5%;
+grid-template-rows: 12% 5% 80% 5% 5%;
 height: 800px;
 
 width: 100%;
@@ -647,8 +647,8 @@ transform: rotateY(180deg);
   border-radius: 50px;
   border-style: none;
   color: white;
-  background: black;
-  opacity: 50%;
+  background: rgba(0, 0, 0, 0.550);
+  /* opacity: 50%; */
   transition-duration: 1000ms;
 
  
