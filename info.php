@@ -79,7 +79,7 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
                   <div class="dropdown ">
                     <ul>
                       <li><a href="#"> Notification</a></li>
-                      <li><a href="#"> Profile</a></li>
+                      <li><a href="profile.php"> Profile</a></li>
                       <li><a href="#"> Help Center</a></li>
                       <li><a href="logout.php" class="user"> Log Out</a></li>
                     </ul>
