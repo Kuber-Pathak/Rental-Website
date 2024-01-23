@@ -249,10 +249,6 @@ p.ubolderst{
 }
 }
 
-.line{
-    display: flex;
-    flex-direction: row;
-}
 .icon{
     width: 100%;
     display: flex;
@@ -261,7 +257,7 @@ p.ubolderst{
 
 .heart{
 
-    padding: auto:;
+    padding: auto;
     margin: 20px;
     border-style: none;
  }
