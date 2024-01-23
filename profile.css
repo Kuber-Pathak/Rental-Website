@@ -60,6 +60,22 @@ header{
     z-index: 100;
     min-height: 60px;
 }
+.middle-side{
+    display: flex;
+    gap: 10vw;
+}
+ul li{
+    list-style-type: none;
+}
+ul li a{
+    font-size: 1rem;
+    text-decoration: none;
+    color: black;
+    font-weight: 550;
+}
+ul li a:hover{
+    text-decoration: underline;
+}
 #navbar{
     background-color: #fff;
     box-shadow: 0 2px 9px 0 rgba(0,0,0,.15);
@@ -167,14 +183,16 @@ nav ul li a:hover{
 .dropdown ul li{
     padding: 20px;
     border-bottom: 0.2px solid #94d4ff;
+    
 }
 .container{
     margin-top: 50px;
 }
-.main-container{}
+.main-container{padding-top:20px ;}
 .row{
     display: flex;
     flex-wrap: wrap;
+    gap:10px;
 }
 .row>*{
     flex-shrink: 0;
@@ -235,8 +253,12 @@ nav ul li a:hover{
     padding: 15px 15px;
 }
 .dashboard-menu li{
-    background-color: rgba(194, 235, 251, 0.647);
+    /* background-color: rgba(194, 235, 251, 0.647); */
+    background-color: rgb(216, 251, 253);
+    /* background-color:#568669; */
+    
     border-radius:15px;
+    transition: color,background .3s ease-in-out;
 }
 .dashboard-menu li a{
     display: flex;
@@ -244,7 +266,176 @@ nav ul li a:hover{
     justify-content: space-between;
     font-size: 1rem;
     font-weight: 550;
+    /* color: #fff; */
 }
 .dashboard-menu li:hover{
-    background-color:rgba(152, 220, 244, 0.809);    
+    background-color: rgba(134, 239, 244, 0.633); 
+}
+.right-column{
+    border: 1px solid #dddddd;
+    flex:0 0 auto;
+    width: 70%;
+}
+.room-container{
+    margin-top: 1.5rem; 
+    width: 75%;
+    padding-left: 10px;
+}
+.room-lists{
+    display: flex;
+    flex-wrap: wrap;
+}
+.room-box{
+    width: 25%;
+    padding: 10px;
+}
+.room-content{
+    /* background-color: #CBF1F5; */
+    background-color: rgb(227, 253, 255);
+    border-radius: 30px;
+    border: 1px #eee solid;
+    box-shadow: 0 0 7px rgba(196, 196, 196, 0.316);
+    margin-bottom: 1rem;
+}
+.room-img{
+    position: relative; 
+    
+}
+.room-img img{
+    border-radius: 30px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    height: 150px;
+    object-fit: cover;
+    width: 100%;
+}
+.room-info{
+    width: 100%;
+    /* text-align: center; */
+    padding: 15px 15px 0px 15px;
+    border-bottom: 1px solid #c5b7b7dd;;
+}
+
+.room-info a{
+    text-decoration:none;
+    color: black;
+}
+.room-info  h4{
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 1.5;
+    margin-bottom: 0.5rem; 
+}
+.info-row{
+    display: flex;
+    flex-wrap: wrap;
+}
+.info-col-1{
+    flex: 0 0 auto;
+    width: 100%;
+}
+.info-col{
+    width: 100%;
+    max-width: 100%;
+    flex: 1 0 0%;
+    padding: 10px 10px;
+
+}
+.room-location{
+    margin-bottom: 0.4rem;
+    display: flex;
+    /* align-items: center; */
+}
+.location{
+    margin-bottom: 0.5rem;
+}
+.room-type{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-right: 1px #cfcfcf solid;
+    overflow-x: hidden;
+    font-size: 14px;
+    gap: 5px;
+}
+.view_button{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    opacity: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.5s ease-in-out;
+}
+.room-img:hover{
+   
+    .view_button{
+        opacity: 1;
+    }
+}
+.view_button a{
+    text-decoration: none;
+    background-color: #417054;
+    color: #fff;
+    border: 0;
+    padding: 7px 25px;
+    border-radius: 15px;
+    margin-bottom: 1rem;
+    font-size: 12px;
+}
+.hide{
+    display: none;
+}
+.room-price{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-right: 1px #cfcfcf solid;
+    overflow-x: hidden;
+    font-size: 14px;
+    gap: 5px;
+}
+.room-fav{
+    position: absolute;
+    top: 10px;
+    left: 15px;
+    color: white;
+    cursor: pointer;
+}
+.small-text{
+    font-size: 14px;
+}
+.modify-btn{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 10px 0px ;
+}
+.update-btn,
+.delete-btn{
+    width: 100%;
+    height: 50px;
+    color: #fff;
+    font-size: 1rem;
+    /* background-color: #417054; */
+    background-color: rgba(8, 8, 8, 0.9);
+    /* background-color: rgb(216, 251, 253); */
+    /* border: 1px solid #417054; */
+    box-shadow: 0 6px 20px rgba(0, 0, 0,0.2);
+    transition: color,background .3s ease-in-out;
+    border-radius: 25px;
+    border: 0px;
+    max-width: 290px;
+    cursor: pointer;
+    padding: 0px 15px;
+
+}
+
+
+.update-btn:hover,.delete-btn:hover {
+    background-color: rgb(227, 253, 255);
+    color: black;
 }
