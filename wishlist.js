@@ -12,15 +12,3 @@ document.querySelector(".left-side").addEventListener("click", () => {
     Dropdown.classList.toggle("hide");
   }
 });
-
-//validation code
-function validateForm(location) {
-  const pass_rgex = "/^[A-Za-z]+$/";
-  if (location.value.match(pass_rgex)) {
-    return true;
-  } else {
-    document.querySelector("#format").innerHTML =
-      " * Location must be in alphabets";
-    return false;
-  }
-}

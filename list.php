@@ -2,7 +2,6 @@
 session_start();
 include 'connect.php';
 include 'config.php';
-$name = $_SESSION['name'];
 if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
   // header(location:login.php);
   echo "<script> window.location.href='signup.php';</script>";
