@@ -210,9 +210,10 @@ ul li a:hover{
 }
 .texts{
     padding: 10px;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
+   
+    
+   
+ 
 }
 p.bolderst{
     font-weight: bolder;
