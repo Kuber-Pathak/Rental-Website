@@ -11,6 +11,11 @@ header{
     z-index: 100;
     min-height: 60px;
 }
+button{
+    background-color: transparent;
+    cursor: pointer;
+        border-style: none;
+}
 #navbar{
     background-color: #fff;
     box-shadow: 0 2px 9px 0 rgba(0,0,0,.15);
@@ -129,6 +134,7 @@ ul li a:hover{
     margin: 50px;
     display: flex;
     justify-content: flex-start;
+    flex-wrap: wrap;
 
 
 }
@@ -204,6 +210,17 @@ ul li a:hover{
 }
 .texts{
     padding: 10px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+p.bolderst{
+    font-weight: bolder;
+
+
+}
+p.ubolderst{
+    color: rgb(172, 48, 48);
 }
 @media screen and (max-width: 1440px) {
     .image{
@@ -231,3 +248,24 @@ ul li a:hover{
 
 }
 }
+
+.line{
+    display: flex;
+    flex-direction: row;
+}
+.icon{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.heart{
+
+    padding: auto:;
+    margin: 20px;
+    border-style: none;
+ }
+
+ .fa-heart{
+    color: orangered;
+ }
