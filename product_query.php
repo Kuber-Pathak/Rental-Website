@@ -1,22 +1,5 @@
 <?php
-function getAllPrducts($order)
-{
-      include 'connect.php';
-      $sql = "SELECT * FROM Amenities 
-        INNER JOIN Property 
-        ON Amenities.PropertyID = Property.PropertyID
-        INNER JOIN  LocalAreaFacility
-        ON LocalAreaFacility.PropertyID = Property.PropertyID";
-
-      $sql .= $order;
-      $result = mysqli_query($conn, $sql);
-
-      while ($row = mysqli_fetch_assoc($result)) {
-            $products[] = $row;
-      }
-      return $products;
-}
-function getLocationPrducts($location, $order)
+function getAllPrducts($order, $userid)
 {
       include 'connect.php';
       $sql = "SELECT * FROM Amenities 
@@ -24,7 +7,28 @@ function getLocationPrducts($location, $order)
         ON Amenities.PropertyID = Property.PropertyID
         INNER JOIN  LocalAreaFacility
         ON LocalAreaFacility.PropertyID = Property.PropertyID
-        WHERE location = '$location'";
+        WHERE Property.user_id <> '$userid'";
+
+      $sql .= $order;
+      $result = mysqli_query($conn, $sql);
+      if (mysqli_num_rows($result) > 0) {
+            while ($row = mysqli_fetch_assoc($result)) {
+                  $products[] = $row;
+            }
+            return $products;
+      } else {
+            return [];
+      }
+}
+function getLocationPrducts($location, $order, $userid)
+{
+      include 'connect.php';
+      $sql = "SELECT * FROM Amenities 
+        INNER JOIN Property 
+        ON Amenities.PropertyID = Property.PropertyID
+        INNER JOIN  LocalAreaFacility
+        ON LocalAreaFacility.PropertyID = Property.PropertyID
+        WHERE location = '$location' AND WHERE Property.user_id <> '$userid'";
       $sql .= $order;
 
       $result = mysqli_query($conn, $sql);
@@ -101,6 +105,25 @@ function getTotalProperty($Id)
       $result = mysqli_query($conn, $sql);
 
       return $result;
+}
+
+function getAllUserPrducts($uid)
+{
+      include 'connect.php';
+      $sql = "SELECT * FROM Amenities 
+        INNER JOIN Property 
+        ON Amenities.PropertyID = Property.PropertyID
+        INNER JOIN  LocalAreaFacility
+        ON LocalAreaFacility.PropertyID = Property.PropertyID
+        WHERE user_id = '$uid'";
+      $result = mysqli_query($conn, $sql);
+      if (mysqli_num_rows($result) > 0) {
+            while ($row = mysqli_fetch_assoc($result)) {
+                  $products[] = $row;
+            }
+
+            return $products;
+      }
 }
 
 ?>

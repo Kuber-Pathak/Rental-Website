@@ -2,6 +2,7 @@
 session_start();
 include 'connect.php';
 include 'config.php';
+$name = $_SESSION['name'];
 if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
   // header(location:login.php);
   echo "<script> window.location.href='signup.php';</script>";
@@ -263,7 +264,7 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
     <div id="navbar">
       <nav class="center">
         <div class="logo">
-          <a href="home.php"><img src="./Images/logo.png" alt="Logo" width="112" /></a>
+          <a href="home.php"><img src="./Images/logo3.png" alt="Logo" width="112" /></a>
         </div>
         <div class="left-side">
           <div class="user-content">
@@ -335,7 +336,7 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
                     <option value="Rent">Rent</option>
                     <option value="Sale">Sale</option>
                     <option value="Lease">Lease</option>
-                    <option value="Paying Guesy">Paying Guest</option>
+                    <option value="PayingGuest">Paying Guest</option>
                   </select>
                   <label for="purpose">Purpose
                     <span class="text-danger">*</span>

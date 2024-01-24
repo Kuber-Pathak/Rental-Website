@@ -33,7 +33,7 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
     <div id="navbar">
       <nav class="center">
         <div class="logo">
-          <a href="home.php"><img src="Images/logo.png" alt="Logo" width="112" /></a>
+          <a href="home.php"><img src="Images/logo3.png" alt="Logo" width="112" /></a>
         </div>
         <ul class="middle-side">
           <li>
@@ -219,7 +219,7 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
             ON Amenities.PropertyID = Property.PropertyID
             INNER JOIN  LocalAreaFacility
             ON LocalAreaFacility.PropertyID = Property.PropertyID
-            WHERE 1";
+            WHERE Property.user_id <> '$userid'";
             if (isset($_GET['location']) && $_GET['location'] != null) {
               $location = $_GET['location'];
               $sql .= " AND location = '$location'";
@@ -251,7 +251,6 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
             ?>
             <div class="room-container">
               <div class="room-title">
-
                 <div class="room-sort">
                   <div class="sort-select">
                     <span>Sort By</span>
@@ -330,7 +329,7 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
                         </div>
                         <div class="info-col">
                           <div class="room-type" title="' . "Category:" . $row["category"] . '">
-                            <img src="./Images/roomLogo.png" alt="" height="20px" width="20px" />
+                            <img src="./Images/roomLogo3.png" alt="" height="20px" width="20px" />
                            <span class="small-text"> ' . $row["category"] . '</span>
                           </div>
                         </div>
@@ -394,9 +393,9 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
                     }
                     // while ($row = mysqli_fetch_assoc($result)) {
                     if (isset($_GET['location']) && $_GET['location'] != NULL) {
-                      $products = getLocationPrducts($_GET['location'], $order);
+                      $products = getLocationPrducts($_GET['location'], $order, $userid);
                     } else {
-                      $products = getAllPrducts($order);
+                      $products = getAllPrducts($order, $userid);
                     }
 
                     $totalrows = count($products);
@@ -413,7 +412,6 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
                     foreach ($products as $row) {
                       echo '
               <div class="room-box">
-
                 <div class="room-content">
                   <div class="room-img">
                     <a href="info.php?id=' . $row['PropertyID'], '"><img src="data:image/jpeg;base64,' . $row["mainphoto"] . '" alt="" /></a>
