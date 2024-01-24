@@ -29,7 +29,7 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
     <div id="navbar">
       <nav>
         <div class="logo">
-          <a href="home.php"><img src="./Images/logo.png" alt="Logo" width="112" /></a>
+          <a href="home.php"><img src="./Images/logo3.png" alt="Logo" width="112" /></a>
         </div>
         <div class="left-side">
           <div class="user-content">
@@ -89,19 +89,19 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
 
       <div class="image">
         <div class="image1 place">
-          <button class="button">
-            <a href="list.php">
+          <a href="list.php">
+            <button class="button">
               <i class="fa-solid fa-plus"></i> List a place
-            </a>
-          </button>
+            </button>
+          </a>
         </div>
 
         <div class="image2 place">
-          <button class="button">
-            <a href="serch.php">
+          <a href="serch.php">
+            <button class="button">
               <i class="fa-solid fa-plus"></i> Find a place
-            </a>
-          </button>
+            </button>
+          </a>
         </div>
       </div>
     </div>

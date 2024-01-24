@@ -42,7 +42,7 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
         <div id="navbar">
             <nav class="center">
                 <div class="logo">
-                    <a href="home.php"><img src="Images/logo.png" alt="Logo" width="112" /></a>
+                    <a href="home.php"><img src="Images/logo3.png" alt="Logo" width="112" /></a>
                 </div>
                 <ul class="middle-side">
                     <li>
