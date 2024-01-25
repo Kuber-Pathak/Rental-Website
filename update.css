@@ -340,11 +340,25 @@ ul li a:hover{
 .basic-col4 label {
     margin-left: 12px;
 }
+
+
 .form-photo{
     position: relative;
     margin-bottom: 4rem;
 }
-
+.basic-col4_5{
+    flex: 0 0 auto;
+    width: 100%;
+    margin-bottom: 2rem;
+}
+.form-photo-prev{
+    width: 100%;
+    padding-bottom: 2rem;
+}
+.form-photo-prev img{
+    width: 500px;
+    border-radius: 20px;
+}
 #main_image{
     font-size: 16px;
     background: #fff;
