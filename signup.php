@@ -13,10 +13,10 @@ if (isset($_POST['usubmit'])) {
         $sql = "SELECT * FROM user_cred WHERE user_email='$uemail'";
         $result = mysqli_query($conn, $sql);
         if (mysqli_num_rows($result) > 0) {
-            // $emailerror = " * Email Already exists.";
-            echo '<script>
-                alert("** Email Already Exists!");
-              </script>';
+            $emailerror = " ** Email Already exists.";
+            // echo '<script>
+            //     alert("** Email Already Exists!");
+            //   </script>';
         } else {
 
             $sql = "INSERT INTO user_cred (user_fname,user_lname,user_gender,user_dob,user_email,user_password,usertype) VALUES ( '$ufname' , '$ulname ', '$ugender', '$udate','$uemail','$upassword','$usertype')";
@@ -44,13 +44,15 @@ if (isset($_POST['isubmit'])) {
             $row = mysqli_fetch_assoc($result);
             $_SESSION['userid'] = $row['user_id'];
             $_SESSION['name'] = $row['user_fname'];
+            $_SESSION['lname'] = $row['user_lname'];
             $_SESSION['logged_in'] = true;
             // header("Location:home.php");
             echo "<script> window.location.href='home.php';</script>";
         } else {
-            echo '<script>
-            alert("** Invalid email or password !!");
-          </script>';
+            $match = "** Invalid email or password !!";
+            //     echo '<script>
+            //     alert("** Invalid email or password !!");
+            //   </script>';
         }
     }
 }
@@ -67,14 +69,40 @@ if (isset($_POST['isubmit'])) {
 <body>
 
     <div class="container">
-        <div class="error">
-            <p class="s_error" id="format">
-                <?php
-                if (isset($error)) {
-                    echo $error;
-                }
-                ?>
-
+        <?php
+        if (isset($error)) {
+            echo '
+            <div class="error show">
+              <p class="error_msg">
+              <i class="fa-solid fa-triangle-exclamation"></i>
+                  ' . '&nbsp;' . $error . '
+                  
+              </p>
+            </div>';
+        }
+        if (isset($emailerror)) {
+            echo '
+            <div class="error show">
+              <p class="error_msg">
+              <i class="fa-solid fa-triangle-exclamation"></i>
+                  ' . '&nbsp;' . $emailerror . '
+                  
+              </p>
+            </div>';
+        }
+        if (isset($match)) {
+            echo '
+            <div class="error show">
+              <p class="error_msg">
+              <i class="fa-solid fa-triangle-exclamation"></i>
+                  ' . '&nbsp;' . $match . '
+                  
+              </p>
+            </div>';
+        }
+        ?>
+        <div class="pass_error show">
+            <p class="error_msg" id="format">
             </p>
         </div>
         <div class="red-box" id="targetd">

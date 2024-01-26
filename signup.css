@@ -21,6 +21,9 @@ a{
   text-decoration: none;
   color: black;
 }
+.hide{
+  display: none;
+}
 .container  {
 display: grid;
 grid-template-columns:23% 25% 4% 25% 23%;
@@ -32,14 +35,63 @@ transition-duration: 1000ms;
 #male,#female{
   margin-right: 5px;
 }
-.s_error{
+.error{
+  visibility: visible;
+  position: absolute;
+  top: 60px;
+  right: 10px;
+  max-width: 100%;
+  transform: translateY(-50%);
+  z-index: 999;
+}
+.pass_error{
+  visibility: hidden;
+  position: absolute;
+  top: 60px;
+  right: 10px;
+  max-width: 100%;
+  transform: translateY(-50%);
+  z-index: 999;
+}
+.error_msg{
+  margin: 0px 10px 0px;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: #51A351;
+  border: 1px solid rgba(0, 0, 0, .1);
+  box-shadow: 0 0 12px #999;
+  color: #fff;
+  opacity: .8;
+  font-size: 1rem;
+}
+.pass_error.show{
+  animation:  show_slide 1.5s ease infinite alternate forwards;
+}
+.error.show{
+  animation:  show_slide 1.5s ease infinite alternate forwards;
+}
+@keyframes show_slide {
+  0%{
+      transform: translateX(100%);
+  }
+  40%{
+      transform: translateX(-10%);
+  }
+  80%{
+      transform: translateX(0%);
+  }
+  100%{
+      transform: translateX(-10px);
+  }
+}
+/* .s_error{
   width: 100%;
   box-sizing: border-box;
   color: red;
   font-size: 14px;
   font-weight: 400;
   margin: 20px 0px 0px 30px;
-  /* padding: 10px; */
+  padding: 10px;
 }
 #format{
   width: 50%;
@@ -47,8 +99,9 @@ transition-duration: 1000ms;
   background-color: #fff;
   border-radius: 20px;
   letter-spacing: 1px;
+  padding: 10px;
   
-}
+} */
 #show,#ishow{
   cursor: pointer;
 }
@@ -173,8 +226,9 @@ transform: rotateY(0deg);
 }
 
 .green-box {
-background: url("./Images/login.jpg");
+background: url("./Images/signup.jpg");
 background-size:cover ;
+background-position: center;
 border-radius: 16px;
 grid-column-start: 3;
 grid-column-end: 5;
@@ -197,8 +251,9 @@ transition-duration: 1000ms;
 
 @keyframes example3 {
   0%   {
-    background: url("./Images/login.jpg");
+    background: url("./Images/signup.jpg");
     background-size:cover ;
+    background-position: center;
     border-radius: 16px;
     box-shadow:0px 9px 9px 0px rgba(0,0,0,.25);
     display: flex;
@@ -214,8 +269,9 @@ transition-duration: 1000ms;
     z-index: 3;
   }
     50%   {
-    background: url("./Images/login.jpg");
+    background: url("./Images/signup.jpg");
     background-size:cover ;
+    background-position: center;
     border-radius: 16px;
     box-shadow:0px 9px 9px 0px rgba(0,0,0,.25);
     display: flex;
@@ -231,8 +287,9 @@ transition-duration: 1000ms;
     z-index: 2;
   }
     100%   {
-      background: url("./Images/login.jpg");
-    background-size:cover ;
+      background: url("./Images/signup.jpg");
+      background-size:cover ;
+      background-position: center;
     border-radius: 16px;
     box-shadow:0px 9px 9px 0px rgba(0,0,0,.25);
     display: flex;
@@ -258,8 +315,9 @@ transition-duration: 1000ms;
 
 @keyframes example7 {
   0%   {
-    background: url("./Images/login.jpg");
+    background: url("./Images/signup.jpg");
     background-size:cover ;
+    background-position: center;
     border-radius: 16px;
     box-shadow:0px 9px 9px 0px rgba(0,0,0,.25);
     display: flex;
@@ -275,8 +333,9 @@ transition-duration: 1000ms;
     z-index: 3;
   }
     50%   {
-    background: url("./Images/login.jpg");
+    background: url("./Images/signup.jpg");
     background-size:cover ;
+    background-position: center;
     border-radius: 16px;
     box-shadow:0px 9px 9px 0px rgba(0,0,0,.25);
     display: flex;
@@ -292,8 +351,9 @@ transition-duration: 1000ms;
     z-index: 2;
   }
     100%   {
-      background: url("./Images/login.jpg");
+      background: url("./Images/signup.jpg");
     background-size:cover ;
+    background-position: center;
     border-radius: 16px;
     box-shadow:0px 9px 9px 0px rgba(0,0,0,.25);
     display: flex;
@@ -311,8 +371,9 @@ transition-duration: 1000ms;
 }
 
 .black-box{
-background: url("./Images/login.jpg");
+background: url("./Images/signup.jpg");
 background-size:cover ;
+background-position: center;
 border-radius: 16px;
 grid-column-start: 2;
 grid-column-end: 4;
@@ -338,8 +399,9 @@ transform: rotateY(180deg);
 
 @keyframes example2 {
   0%   {
-    background: url("./Images/login.jpg");
+    background: url("./Images/signup.jpg");
     background-size:cover ;
+    background-position: center;
     border-radius: 16px;
     box-shadow:0px 9px 9px 0px rgba(0,0,0,.25);
     display: flex;
@@ -355,8 +417,9 @@ transform: rotateY(180deg);
     z-index: 1;
   }
     50%   {
-    background: url("./Images/login.jpg");
+    background: url("./Images/signup.jpg");
     background-size:cover ;
+    background-position: center;
     border-radius: 16px;
     box-shadow:0px 9px 9px 0px rgba(0,0,0,.25);
     display: flex;
@@ -372,8 +435,9 @@ transform: rotateY(180deg);
     z-index: 1;
   }
     100%   {
-      background: url("./Images/login.jpg");
+      background: url("./Images/signup.jpg");
     background-size:cover ;
+    background-position: center;
     border-radius: 16px;
     box-shadow:0px 9px 9px 0px rgba(0,0,0,.25);
     display: flex;
@@ -399,8 +463,9 @@ transform: rotateY(180deg);
 
 @keyframes example6 {
   0%   {
-    background: url("./Images/login.jpg");
+    background: url("./Images/signup.jpg");
     background-size:cover ;
+    background-position: center;
     border-radius: 16px;
     box-shadow:0px 9px 9px 0px rgba(0,0,0,.25);
     display: flex;
@@ -416,8 +481,9 @@ transform: rotateY(180deg);
     z-index: 2;
   }
     50%   {
-    background: url("./Images/login.jpg");
+    background: url("./Images/signup.jpg");
     background-size:cover ;
+    background-position: center;
     border-radius: 16px;
     box-shadow:0px 9px 9px 0px rgba(0,0,0,.25);
     display: flex;
@@ -433,8 +499,9 @@ transform: rotateY(180deg);
     z-index: 2;
   }
     100%   {
-      background: url("./Images/login.jpg");
+      background: url("./Images/signup.jpg");
     background-size:cover ;
+    background-position: center;
     border-radius: 16px;
     box-shadow:0px 9px 9px 0px rgba(0,0,0,.25);
     display: flex;
@@ -639,6 +706,7 @@ transform: rotateY(180deg);
   margin: 5px 0px 20px 0px ;
   border-radius: 50px;
   background: linear-gradient(90deg, rgba(240,180,237,1) 0%, rgba(165,120,219,1) 100%);
+  /* background: linear-gradient(90deg, rgb(218 216 216) 0%, rgb(159 159 159) 100%); */
   border-style: none;
   box-shadow: 0 2px 9px 0 rgba(0,0,0,.15);
   color: white;
@@ -648,7 +716,8 @@ transform: rotateY(180deg);
 }
 .button:hover{
  
-  background:linear-gradient(98.3deg, rgb(0, 0, 0) 10.6%, rgb(255, 0, 0) 97.7%) ;
+  background: linear-gradient(90deg, rgb(218 216 216) 0%, rgb(159 159 159) 100%);
+  /* background: linear-gradient(90deg, rgba(240,180,237,1) 0%, rgba(165,120,219,1) 100%); */
 }
 
 .signup{
@@ -673,7 +742,8 @@ transform: rotateY(180deg);
   border-radius: 50px;
   border-style: none;
   color: white;
-  background: rgba(0, 0, 0, 0.550);
+  background: linear-gradient(90deg, rgb(218 216 216) 0%, rgb(159 159 159) 100%);
+  /* background: linear-gradient(90deg, rgba(240,180,237,1) 0%, rgba(165,120,219,1) 100%); */
   /* opacity: 50%; */
   transition-duration: 1000ms;
 
@@ -684,7 +754,8 @@ button:hover {
   cursor: pointer;
 }
 .butt:hover{
- background:linear-gradient(98.3deg, rgb(0, 0, 0) 10.6%, rgb(255, 0, 0) 97.7%) ;
+  background: linear-gradient(90deg, rgba(240,180,237,1) 0%, rgba(165,120,219,1) 100%);
+  /* background: linear-gradient(90deg, rgb(218 216 216) 0%, rgb(159 159 159) 100%); */
 }
 
 .header{
@@ -724,8 +795,9 @@ transform-style: preserve-3d;
 transform: rotateY(0deg);
 }
   .green-box {
-background: url("./Images/login.jpg");
+background: url("./Images/signup.jpg");
 background-size:cover ;
+background-position: center;
 border-radius: 16px;
 grid-column-start: 1;
 grid-column-end: 2;
@@ -739,8 +811,9 @@ justify-content: space-evenly;
 transition-duration: 1000ms;
 }
   .black-box{
-background: url("./Images/login.jpg");
+background: url("./Images/signup.jpg");
 background-size:cover ;
+background-position: center;
 border-radius: 16px;
 grid-column-start: 1;
 grid-column-end: 2;
