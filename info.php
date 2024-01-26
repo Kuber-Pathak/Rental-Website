@@ -11,11 +11,8 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
   $username = $_SESSION['name'];
   if (isset($_GET['id'])) {
     $propertyID = $_GET['id'];
-
     $row_count_sql = "SELECT * FROM LocalAreaFacility WHERE PropertyID = $propertyID ";
     $row_count_sql_result = mysqli_query($conn, $row_count_sql);
-
-
     while ($row_LocalAreaFacility = mysqli_fetch_assoc($row_count_sql_result)) {
       $columns = array_diff_key($row_LocalAreaFacility, array('PropertyID' => 0, 'LocalAreaFacilityID' => 0));
       $row_count = array_sum($columns) > 0 ? true : false;
@@ -497,55 +494,102 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
                   } ?>
 
                   <div class="column">
-                    <button class="book-btn" onclick="return showBookConfirmation()">Book Now</button>
+                    <button class="book-btn" onclick="return showBookConfirmation()">Submit for Confirmation</button>
                   </div>
                 </div>
                 <div class="column-3">
-                  <div class="message-form">
-                    <div>
-                      <?php
-                      $user_sql = "SELECT * from user_cred 
+                  <?php
+                  if (isset($_POST['submit_message'])) {
+                    if (empty($_POST['message'])) {
+                      $empty = "*Message cannot be empty";
+                    } else {
+                      $message = $_POST['message'];
+                      $toUser = $_POST['toUser'];
+                      $msg_sql = "INSERT INTO user_message (message,PropertyID,fromName,user_id) VALUES('$message','$propertyID','$username','$toUser')";
+                      $msg_result = mysqli_query($conn, $msg_sql);
+                      if ($msg_result) {
+                        $sucess = "Message sent sucessfully";
+                      }
+                    }
+                  }
+                  ?>
+                  <form action="" method="POST">
+                    <div class="message-form">
+                      <div>
+                        <?php
+                        $user_sql = "SELECT * from user_cred 
                             INNER JOIN Property
                             ON Property.user_id = user_cred .user_id
                             WHERE Property.PropertyID = $propertyID
                             ";
-                      $user_result = mysqli_query($conn, $user_sql);
+                        $user_result = mysqli_query($conn, $user_sql);
 
-                      while ($user_row = mysqli_fetch_assoc($user_result)) {
+                        while ($user_row = mysqli_fetch_assoc($user_result)) {
 
-                        ?>
-                        <div class="profile-image">
-                          <img src="Images/profile.jpg" alt="" />
-                          <span class="user-info">
-                            <?php echo $user_row['user_fname'] . " " . $user_row['user_lname'] ?>
-                          </span>
-                        </div>
-                        <div class="message-container">
-                          <div class="message-box">
-                            <textarea placeholder="Write a Message."></textarea>
-                            <button class="message-btn" onclick="return showMessageConfirmation()">Send Message</button>
+                          ?>
+                          <div class="profile-image">
+                            <input type="hidden" name="toUser" value="<?php echo $row['user_id']; ?>">
+                            <img src="Images/profile.jpg" alt="" />
+                            <div class="profile-info">
+                              <span class="user-info">
+                                <?php echo $user_row['user_fname'] . " " . $user_row['user_lname'] ?>
+                              </span>
+                              <span class="user-info">
+                                <?php echo 'Contact: ' . $user_row['contact']; ?>
+                              </span>
+                            </div>
                           </div>
+                          <div class="message-container">
+                            <div class="message-box">
+                              <textarea placeholder="Write a Message." name="message" id="message"></textarea>
+                              <div class="error">
+                                <?php
+                                if (isset($empty)) {
+                                  echo $empty;
+                                }
+                                ?>
+                              </div>
+                              <button class="message-btn" name="submit_message" value="submit"
+                                onclick="return showMessageConfirmation()">Send
+                                Message</button>
+                            </div>
+                          </div>
+
+
                         </div>
-
-
                       </div>
-                    </div>
+                    </form>
                     <div id="map"></div>
                     <?php
-                      }
-                      ?>
+                        }
+                        ?>
                 </div>
               </div>
             </div>
+            <?php
+            if (isset($sucess)) {
+              echo '
+            <div class="sucess show">
+              <span class="sucess_msg">
+              
+              <i class="fa-solid fa-check"></i>
+                  ' . '&nbsp;' . $sucess . '
+                  
+              </span>
+            </div>';
+            }
+            ?>
           </div>
+
           <?php
 
       }
     }
+
   }
 }
 ?>
 </body>
-<script src="info.js?v=<? echo $version ?>"></script>
+<script src="info.js?v=<? echo $version; ?>"></script>
 
 </html>

@@ -18,6 +18,12 @@ document.querySelector(".left-side").addEventListener("click", () => {
     Dropdown.classList.toggle("hide");
   }
 });
+
+//for sucess
+function showMessage() {
+  document.querySelector(".sucess").style.visibility = "hidden";
+}
+setTimeout("showMessage()", 3000);
 //for latitude and lngitude
 // var Location = "Balkumari";
 // document.addEventListener(onload, findAddress());
