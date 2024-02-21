@@ -25,7 +25,6 @@ input{
 }
 
 h4{
-    
     font-size: 1.5rem;
 }
 h2{
@@ -37,6 +36,44 @@ body{
 }
 li{
     list-style-type: none;
+}
+.sucess{
+    display: none;
+    position: absolute;
+    top:9rem;
+    right: 30px;
+    max-width: 100%;
+    transform: translateY(-50%);
+    z-index: 999;
+}
+.sucess_msg{
+    margin: 0px 10px 0px;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #51A351;
+    border: 1px solid rgba(0, 0, 0, .1);
+    box-shadow: 0 0 12px #999;
+    color: #fff;
+    opacity: .8;
+    font-size: 1rem;
+}
+.sucess.show{
+    display: block;
+    animation:  show_slide 1.5s ease forwards;
+}
+@keyframes show_slide {
+    0%{
+        transform: translateX(100%);
+    }
+    40%{
+        transform: translateX(-10%);
+    }
+    80%{
+        transform: translateX(0%);
+    }
+    100%{
+        transform: translateX(-10px);
+    }
 }
 .active{
     background-color: lightgrey; ;
@@ -59,6 +96,7 @@ header{
     max-height: 126px;
     z-index: 100;
     min-height: 60px;
+    position: relative;
 }
 #navbar{
     background-color: #fff;
@@ -169,6 +207,7 @@ ul li a:hover{
     display: flex;
     justify-content: center;
     align-items: center;
+    text-transform: capitalize;
 }
 .dropdown ul li{
     padding: 20px;

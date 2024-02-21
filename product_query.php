@@ -28,7 +28,7 @@ function getLocationPrducts($location, $order, $userid)
         ON Amenities.PropertyID = Property.PropertyID
         INNER JOIN  LocalAreaFacility
         ON LocalAreaFacility.PropertyID = Property.PropertyID
-        WHERE location = '$location' AND WHERE Property.user_id <> '$userid'";
+        WHERE location = '$location' AND  Property.user_id <> '$userid'";
       $sql .= $order;
 
       $result = mysqli_query($conn, $sql);
@@ -124,6 +124,42 @@ function getAllUserPrducts($uid)
 
             return $products;
       }
+}
+function getWishlist($pid, $uid)
+{
+      include 'connect.php';
+      $sql = "SELECT * FROM wishlist_info 
+        WHERE user_id = '$uid' AND 	PropertyID = '$pid'";
+      $result = mysqli_query($conn, $sql);
+      if (mysqli_num_rows($result) > 0) {
+            while ($row = mysqli_fetch_assoc($result)) {
+                  $products[] = $row;
+            }
+
+            return $products;
+      }
+}
+function getMessage($uid, $start, $rows_per_page)
+{
+      include 'connect.php';
+      $sql = "SELECT * FROM user_message WHERE user_id = '$uid ' LIMIT $start, $rows_per_page";
+      $result = mysqli_query($conn, $sql);
+      if (mysqli_num_rows($result) > 0) {
+            while ($row = mysqli_fetch_assoc($result)) {
+                  $products[] = $row;
+            }
+
+            return $products;
+      } else {
+            return [];
+      }
+}
+function getTotalMessage($uid)
+{
+      include 'connect.php';
+      $sql = "SELECT * FROM user_message WHERE user_id = '$uid '";
+      $result = mysqli_query($conn, $sql);
+      return mysqli_num_rows($result);
 }
 
 ?>

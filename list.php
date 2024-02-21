@@ -2,7 +2,7 @@
 session_start();
 include 'connect.php';
 include 'config.php';
-$name = $_SESSION['name'];
+
 if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
   // header(location:login.php);
   echo "<script> window.location.href='signup.php';</script>";
@@ -242,9 +242,9 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
   VALUES ('$propertyID', '$local_area_gym', '$local_area_swimming_pool', '$local_area_playing_court', '$local_area_hospital', '$local_area_school', '$local_area_montessori', '$local_area_college', '$local_area_temple', '$local_area_resturants', '$local_area_super_market','$local_area_bus_stop','$local_area_taxi_stand','$local_area_police_station' ,'$local_area_bank', '$local_area_banquet_hall', '$local_area_gas_station')";
     mysqli_query($conn, $localAreaFacilityInsertQuery);
 
-    // header("Location: home.php");
-    echo "<script> window.location.href='home.php';</script>";
-    exit;
+    header("Location: profile.php");
+    $_SESSION['sucess'] = "Property Listed Sucessfully";
+
   }
 }
 
@@ -277,10 +277,12 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
           </div>
           <div class="dropdown">
             <ul>
-              <li><a href="#"> Notification</a></li>
-              <li><a href="profile.php"> Profile</a></li>
-              <li><a href="#"> Help Center</a></li>
-              <li><a href="logout.php" class="user"> Log Out</a></li>
+              <li><a href="profile.php"><i class="fa-solid fa-user"></i> Profile</a></li>
+              <li><a href="wishlist.php"><i class="fa-solid fa-heart"></i> WishList</a></li>
+              <li><a href="contact.php"><i class="fa-solid fa-message"></i> Contact Us</a></li>
+              <li><a href="#"><i class="fa-solid fa-circle-info"></i> Help Center</a></li>
+              <li><a href="logout.php" class="user"><i class="fa-solid fa-arrow-right-from-bracket"></i> Log Out</a>
+              </li>
             </ul>
           </div>
           <!-- <a href="#" class="left-btn btn">Sign up</a> -->

@@ -13,10 +13,7 @@ if (isset($_POST['usubmit'])) {
         $sql = "SELECT * FROM user_cred WHERE user_email='$uemail'";
         $result = mysqli_query($conn, $sql);
         if (mysqli_num_rows($result) > 0) {
-            $emailerror = " ** Email Already exists.";
-            // echo '<script>
-            //     alert("** Email Already Exists!");
-            //   </script>';
+            $emailerror = "Email Already exists.";
         } else {
 
             $sql = "INSERT INTO user_cred (user_fname,user_lname,user_gender,user_dob,user_email,user_password,usertype) VALUES ( '$ufname' , '$ulname ', '$ugender', '$udate','$uemail','$upassword','$usertype')";
@@ -70,16 +67,6 @@ if (isset($_POST['isubmit'])) {
 
     <div class="container">
         <?php
-        if (isset($error)) {
-            echo '
-            <div class="error show">
-              <p class="error_msg">
-              <i class="fa-solid fa-triangle-exclamation"></i>
-                  ' . '&nbsp;' . $error . '
-                  
-              </p>
-            </div>';
-        }
         if (isset($emailerror)) {
             echo '
             <div class="error show">
@@ -101,8 +88,8 @@ if (isset($_POST['isubmit'])) {
             </div>';
         }
         ?>
-        <div class="pass_error show">
-            <p class="error_msg" id="format">
+        <div class="pass_error">
+            <p class="pass_msg" id="format">
             </p>
         </div>
         <div class="red-box" id="targetd">
@@ -191,7 +178,7 @@ if (isset($_POST['isubmit'])) {
                         </div>
 
                         <div class="center">
-                            <button name="usubmit" class="button">
+                            <button name="usubmit" id="usubmit" class="button">
                                 <h2>SIGN UP</h2>
                             </button>
                         </div>

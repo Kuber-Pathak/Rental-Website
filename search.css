@@ -89,17 +89,32 @@ nav{
     display: flex;
     gap: 10vw;
 }
-ul li{
+.middle-side li{
     list-style-type: none;
+    padding: 15px;
+    border-radius: 25px;
 }
-ul li a{
+
+.middle-side li a{
     font-size: 1rem;
     text-decoration: none;
-    color: black;
+    color: #717171;;
     font-weight: 550;
 }
-ul li a:hover{
-    text-decoration: underline;
+
+.middle-side  li.active a{
+    color: black;
+    font-weight: 600;
+}
+
+.middle-side li:hover{
+    background-color: rgba(211, 211, 211, 0.299);
+    a{
+        color:black;
+    }
+}
+.middle-side  li.active:hover{
+    background-color: #fff;
 }
 
 .left-side {
@@ -169,10 +184,17 @@ ul li a:hover{
     display: flex;
     justify-content: center;
     align-items: center;
+    text-transform: capitalize;
 }
 .dropdown ul li{
     padding: 20px;
     border-bottom: 0.2px solid #94d4ff;
+}
+.dropdown ul li a{
+    color:black ;
+}
+.dropdown ul li:hover a{
+    text-decoration: underline;
 }
 
 #perfect{
@@ -189,6 +211,46 @@ ul li a:hover{
     display: flex;
     flex-wrap: wrap;
 }
+.sucess{
+    /* display: none; */
+    position: absolute;
+    top:9rem;
+    left: 0px;
+    max-width: 100%;
+    transform: translateX(-200%);
+    /* transform: translateY(-50%,-50%); */
+    /* transform: translate(180%,180%); */
+    z-index: 999;
+    animation:  show_slide 4s ease-in-out forwards alternate;
+}
+.sucess_msg{
+    margin: 0px 10px 0px;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #51A351;
+    border: 1px solid rgba(0, 0, 0, .1);
+    box-shadow: 0 0 12px #999;
+    color: #fff;
+    opacity: .8;
+    font-size: 1rem;
+}
+/* .sucess.show{
+    display: block;
+    
+} */
+@keyframes show_slide {
+    20% {
+		transform: translateX(-100%);
+    }
+	50%,80% {
+		transform: translateX(0%);
+	} 
+    100%{
+        transform: translateX(-100%);
+    }
+
+    
+}
 .search-filter{
     
     margin-bottom: 1rem;
@@ -201,7 +263,7 @@ ul li a:hover{
     margin-top: 25px;
     /* border-right: 1px solid black; */
 }
-.search{
+#searchForm{
     width: 25%;
     
     
@@ -405,12 +467,18 @@ ul li a:hover{
     padding: 0 10px;
 }
 .room-content{
-    background-color: #CBF1F5;
-    /* background-color: rgb(227, 253, 255); */
+    /* background-color: #CBF1F5; */
+    background-color: rgb(227, 253, 255);
     border-radius: 30px;
     border: 1px #eee solid;
     box-shadow: 0 0 7px rgba(196, 196, 196, 0.316);
     margin-bottom: 1rem;
+}
+#wishlist-btn{
+    background: none;
+    border: none;
+    cursor: pointer;
+
 }
 .room-img{
     position: relative; 

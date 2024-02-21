@@ -57,9 +57,9 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
                 </div>
                 <ul class="middle-side">
                   <li>
-                    <a href="#">WhishList <i class="fa-regular fa-heart"></i></a>
+                    <a href="wishlist.php">WhishList <i class="fa-regular fa-heart"></i></a>
                   </li>
-                  <li><a href="#">Contact Us</a></li>
+                  <li><a href="contact.php">Contact Us</a></li>
                   <li>
                     <a href="list.php">List a place <i class="fa-solid fa-plus"></i></a>
                   </li>
@@ -73,12 +73,14 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
                       </span>
                     </div>
                   </div>
-                  <div class="dropdown ">
+                  <div class="dropdown">
                     <ul>
-                      <li><a href="#"> Notification</a></li>
-                      <li><a href="profile.php"> Profile</a></li>
-                      <li><a href="#"> Help Center</a></li>
-                      <li><a href="logout.php" class="user"> Log Out</a></li>
+                      <li><a href="profile.php"><i class="fa-solid fa-user"></i> Profile</a></li>
+                      <li><a href="wishlist.php"><i class="fa-solid fa-heart"></i> WishList</a></li>
+                      <li><a href="contact.php"><i class="fa-solid fa-message"></i> Contact Us</a></li>
+                      <li><a href="#"><i class="fa-solid fa-circle-info"></i> Help Center</a></li>
+                      <li><a href="logout.php" class="user"><i class="fa-solid fa-arrow-right-from-bracket"></i> Log Out</a>
+                      </li>
                     </ul>
                   </div>
                   <!-- <a href="#" class="left-btn btn">Sign up</a> -->
@@ -505,64 +507,76 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
                     } else {
                       $message = $_POST['message'];
                       $toUser = $_POST['toUser'];
-                      $msg_sql = "INSERT INTO user_message (message,PropertyID,fromName,user_id) VALUES('$message','$propertyID','$username','$toUser')";
-                      $msg_result = mysqli_query($conn, $msg_sql);
-                      if ($msg_result) {
-                        $sucess = "Message sent sucessfully";
+                      $msg_check = "SELECT * FROM user_message WHERE message='$message' AND fromName='$username' AND user_id='$toUser' AND PropertyID='$propertyID' ";
+                      $msg_check_result = mysqli_query($conn, $msg_check);
+                      if (mysqli_num_rows($msg_check_result) == 0) {
+                        $msg_sql = "INSERT INTO user_message (message,PropertyID,fromName,user_id) VALUES('$message','$propertyID','$username','$toUser')";
+                        $msg_result = mysqli_query($conn, $msg_sql);
+                        if ($msg_result) {
+                          $sucess = "Message sent sucessfully";
+                        }
                       }
                     }
                   }
                   ?>
-                  <form action="" method="POST">
-                    <div class="message-form">
-                      <div>
-                        <?php
-                        $user_sql = "SELECT * from user_cred 
+                  <?php
+                  $check_sql = "SELECT * FROM Property WHERE user_id='$userid' AND PropertyID ='$propertyID'";
+                  $check_result = mysqli_query($conn, $check_sql);
+                  if (mysqli_num_rows($check_result) == 0) {
+                    ?>
+                    <form action="" method="POST">
+                      <div class="message-form">
+                        <div>
+                          <?php
+                          $user_sql = "SELECT * from user_cred 
                             INNER JOIN Property
                             ON Property.user_id = user_cred .user_id
                             WHERE Property.PropertyID = $propertyID
                             ";
-                        $user_result = mysqli_query($conn, $user_sql);
+                          $user_result = mysqli_query($conn, $user_sql);
 
-                        while ($user_row = mysqli_fetch_assoc($user_result)) {
+                          while ($user_row = mysqli_fetch_assoc($user_result)) {
 
-                          ?>
-                          <div class="profile-image">
-                            <input type="hidden" name="toUser" value="<?php echo $row['user_id']; ?>">
-                            <img src="Images/profile.jpg" alt="" />
-                            <div class="profile-info">
-                              <span class="user-info">
-                                <?php echo $user_row['user_fname'] . " " . $user_row['user_lname'] ?>
-                              </span>
-                              <span class="user-info">
-                                <?php echo 'Contact: ' . $user_row['contact']; ?>
-                              </span>
-                            </div>
-                          </div>
-                          <div class="message-container">
-                            <div class="message-box">
-                              <textarea placeholder="Write a Message." name="message" id="message"></textarea>
-                              <div class="error">
-                                <?php
-                                if (isset($empty)) {
-                                  echo $empty;
-                                }
-                                ?>
+                            ?>
+                            <div class="profile-image">
+                              <input type="hidden" name="toUser" value="<?php echo $row['user_id']; ?>">
+                              <img src="Images/profile.jpg" alt="" />
+                              <div class="profile-info">
+                                <span class="user-info">
+                                  <?php echo $user_row['user_fname'] . " " . $user_row['user_lname'] ?>
+                                </span>
+                                <span class="user-info">
+                                  <?php echo 'Contact: ' . $user_row['contact']; ?>
+                                </span>
                               </div>
-                              <button class="message-btn" name="submit_message" value="submit"
-                                onclick="return showMessageConfirmation()">Send
-                                Message</button>
                             </div>
+                            <div class="message-container">
+                              <div class="message-box">
+                                <textarea placeholder="Write a Message." name="message" id="message"></textarea>
+                                <div class="error">
+                                  <?php
+                                  if (isset($empty)) {
+                                    echo $empty;
+                                  }
+                                  ?>
+                                </div>
+                                <button class="message-btn" name="submit_message" value="submit"
+                                  onclick="return showMessageConfirmation()">Send
+                                  Message</button>
+                              </div>
+                            </div>
+
+
                           </div>
-
-
                         </div>
-                      </div>
-                    </form>
-                    <div id="map"></div>
+                      </form>
+                      <?php
+                          } ?>
                     <?php
-                        }
-                        ?>
+                  }
+                  ?>
+                  <div id="map"></div>
+
                 </div>
               </div>
             </div>
@@ -577,6 +591,7 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
                   
               </span>
             </div>';
+              unset($sucess);
             }
             ?>
           </div>

@@ -118,18 +118,34 @@ nav{
     display: flex;
     gap: 10vw;
 }
-ul li{
+.middle-side li{
     list-style-type: none;
+    padding: 15px;
+    border-radius: 25px;
 }
-ul li a{
+
+.middle-side li a{
     font-size: 1rem;
     text-decoration: none;
-    color: black;
+    color: #717171;;
     font-weight: 550;
 }
-ul li a:hover{
-    text-decoration: underline;
+
+.middle-side  li.active a{
+    color: black;
+    font-weight: 600;
 }
+
+.middle-side li:hover{
+    background-color: rgba(211, 211, 211, 0.299);
+    a{
+        color:black;
+    }
+}
+.middle-side  li.active:hover{
+    background-color: #fff;
+}
+
 
 .left-side {
     /* margin: 16px; */
@@ -205,6 +221,13 @@ ul li a:hover{
     padding: 20px;
     border-bottom: 0.2px solid #94d4ff;
 }
+.dropdown ul li a{
+    color: black;
+    text-decoration: none;
+}
+.dropdown ul li:hover {
+    text-decoration: underline;
+}
 .main{
     position: relative;
     margin-top: 4.5rem;
@@ -234,6 +257,7 @@ ul li a:hover{
 .column-3{
     flex: 0 0 auto;
     width: 25%;
+    margin-top: 123px;
 }
 .main-title h1{ 
     font-size: 1.2em ;
@@ -322,9 +346,10 @@ ul li a:hover{
 }
 .message-form{
     width: 100%;
-    border-radius: 6px;
+    border-radius: 25px;
     border: 1px solid #dbdbdb;
     padding: 20px;
+    box-shadow: rgba(0, 0, 0, 0.12) 0px 6px 16px;
 }
 .profile-image{
     display: flex;

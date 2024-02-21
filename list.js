@@ -86,3 +86,11 @@ for (var i = 0; i <= 20; i++) {
 function showConfirmation() {
   return confirm("Are you sure you want to submit?");
 }
+
+//for sucess emssage
+// setTimeout(() => {
+//   document.querySelector(".sucess").classList.toggle("show");
+// }, 1.5);
+// setTimeout(() => {
+//   document.querySelector(".sucess").classList.toggle("show");
+// }, 3000);

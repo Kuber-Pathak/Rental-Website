@@ -16,6 +16,33 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
   //       INNER JOIN  LocalAreaFacility
   //       ON LocalAreaFacility.PropertyID = Property.PropertyID";
   // $result = mysqli_query($conn, $sql);
+  if (isset($_POST['wishlist_insert'])) {
+
+    $pid = $_POST['pid'];
+    $uid = $_POST['uid'];
+    $wishlist_check = "SELECT * FROM wishlist_info WHERE PropertyID= '$pid' AND user_id='$uid'";
+    $check_result = mysqli_query($conn, $wishlist_check);
+    if (mysqli_num_rows($check_result) == 0) {
+      $wishlist_sql = "INSERT INTO wishlist_info  (user_id, PropertyID) VALUES ('$uid', '$pid') ";
+      $wishlist_result = mysqli_query($conn, $wishlist_sql);
+      if ($wishlist_result) {
+        $isucess = "Added to wishlist.";
+      }
+    }
+  }
+  if (isset($_POST['wishlist_delete'])) {
+    $pid = $_POST['pid'];
+    $uid = $_POST['uid'];
+    $wishlist_check = "SELECT * FROM wishlist_info WHERE PropertyID= '$pid' AND user_id='$uid'";
+    $check_result = mysqli_query($conn, $wishlist_check);
+    if (mysqli_num_rows($check_result) > 0) {
+      $wishlist_sql = "DELETE FROM wishlist_info  WHERE user_id = '$uid' AND PropertyID = '$pid' ";
+      $wishlist_result = mysqli_query($conn, $wishlist_sql);
+      if ($wishlist_result) {
+        $dsucess = "Removed from wishlist.";
+      }
+    }
+  }
 }
 ?>
 <!DOCTYPE html>
@@ -37,7 +64,7 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
         </div>
         <ul class="middle-side">
           <li>
-            <a href="#">WhishList <i class="fa-regular fa-heart"></i></a>
+            <a href="wishlist.php">WishList <i class="fa-regular fa-heart"></i></a>
           </li>
           <li><a href="#">Contact Us</a></li>
           <li>
@@ -55,10 +82,12 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
           </div>
           <div class="dropdown">
             <ul>
-              <li><a href="#"> Notification</a></li>
-              <li><a href="profile.php"> Profile</a></li>
-              <li><a href="#"> Help Center</a></li>
-              <li><a href="logout.php" class="user"> Log Out</a></li>
+              <li><a href="profile.php"><i class="fa-solid fa-user"></i> Profile</a></li>
+              <li><a href="wishlist.php"><i class="fa-solid fa-heart"></i> WishList</a></li>
+              <li><a href="contact.php"><i class="fa-solid fa-message"></i> Contact Us</a></li>
+              <li><a href="#"><i class="fa-solid fa-circle-info"></i> Help Center</a></li>
+              <li><a href="logout.php" class="user"><i class="fa-solid fa-arrow-right-from-bracket"></i> Log Out</a>
+              </li>
             </ul>
           </div>
           <!-- <a href="#" class="left-btn btn">Sign up</a> -->
@@ -66,14 +95,41 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
       </nav>
     </div>
   </header>
-  <form action="#" method="GET" id="searchForm">
-    <div class=" main">
-      <div class="container center">
-        <div class="banner-image">
-          <img src="./Images/room.jpg" alt="" id="perfect" />
-        </div>
-        <div class="main-content">
 
+  <!-- <form action="#" method="GET" id="searchForm"> -->
+  <div class=" main">
+    <div class="container center">
+      <?php
+      if (isset($isucess)) {
+        echo '
+    <div class="sucess">
+    <p class="sucess_msg" id="format">
+    <i class="fa-solid fa-check"></i> 
+    ' . $isucess . '
+    </p>
+    </div>
+
+    ';
+        unset($isucess);
+      }
+      if (isset($dsucess)) {
+        echo '
+    <div class="sucess">
+    <p class="sucess_msg" id="format">
+    <i class="fa-solid fa-xmark"></i> 
+    ' . $dsucess . '
+    </p>
+    </div>
+
+    ';
+        unset($dsucess);
+      }
+      ?>
+      <div class="banner-image">
+        <img src="./Images/room.jpg" alt="" id="perfect" />
+      </div>
+      <div class="main-content">
+        <form action="#" method="GET" id="searchForm">
           <div class="search">
 
             <div class="search-container">
@@ -212,131 +268,144 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
             </div>
 
           </div>
-          <?php
-          if (isset($_GET['submit'])) {
-            $sql = "SELECT * FROM Amenities 
+        </form>
+        <?php
+        if (isset($_GET['submit'])) {
+          $sql = "SELECT * FROM Amenities 
             INNER JOIN Property 
             ON Amenities.PropertyID = Property.PropertyID
             INNER JOIN  LocalAreaFacility
             ON LocalAreaFacility.PropertyID = Property.PropertyID
             WHERE Property.user_id <> '$userid'";
-            if (isset($_GET['location']) && $_GET['location'] != null) {
-              $location = $_GET['location'];
-              $sql .= " AND location = '$location'";
-            }
-            if (isset($_GET['startPrice']) && $_GET['startPrice'] != null) {
-              $startPrice = $_GET['startPrice'];
-              $sql .= " AND price >= '$startPrice'";
-            }
-            if (isset($_GET['endPrice']) && $_GET['endPrice'] != null) {
-              $endPrice = $_GET['endPrice'];
-              $sql .= " AND price <= '$endPrice'";
-            }
-            if (isset($_GET['Rcategory']) && $_GET['Rcategory'] != null) {
-              $Rcategory = $_GET['Rcategory'];
-              $RcategoryString = "'" . implode("', '", $Rcategory) . "'";
-              $sql .= " AND category IN ($RcategoryString)";
-            }
-            // if (isset($_GET['Ccategory']) && $_GET['Ccategory'] != null) {
-            //   $Ccategory = $_GET['Ccategory'];
-            //   $CcategoryString = "'" . implode("', '", $Ccategory) . "'";
-            //   $sql .= " AND category IN ($CcategoryString)";
-            // }
-            if (isset($_GET['Fcategory']) && $_GET['Fcategory'] != null) {
-              $Fcategory = $_GET['Fcategory'];
-              $FcategoryString = "'" . implode("', '", $Fcategory) . "'";
-              $sql .= " AND rental_floor IN ($FcategoryString)";
-            }
+          if (isset($_GET['location']) && $_GET['location'] != null) {
+            $location = $_GET['location'];
+            $sql .= " AND location = '$location'";
+          }
+          if (isset($_GET['startPrice']) && $_GET['startPrice'] != null) {
+            $startPrice = $_GET['startPrice'];
+            $sql .= " AND price >= '$startPrice'";
+          }
+          if (isset($_GET['endPrice']) && $_GET['endPrice'] != null) {
+            $endPrice = $_GET['endPrice'];
+            $sql .= " AND price <= '$endPrice'";
+          }
+          if (isset($_GET['Rcategory']) && $_GET['Rcategory'] != null) {
+            $Rcategory = $_GET['Rcategory'];
+            $RcategoryString = "'" . implode("', '", $Rcategory) . "'";
+            $sql .= " AND category IN ($RcategoryString)";
+          }
+          // if (isset($_GET['Ccategory']) && $_GET['Ccategory'] != null) {
+          //   $Ccategory = $_GET['Ccategory'];
+          //   $CcategoryString = "'" . implode("', '", $Ccategory) . "'";
+          //   $sql .= " AND category IN ($CcategoryString)";
+          // }
+          if (isset($_GET['Fcategory']) && $_GET['Fcategory'] != null) {
+            $Fcategory = $_GET['Fcategory'];
+            $FcategoryString = "'" . implode("', '", $Fcategory) . "'";
+            $sql .= " AND rental_floor IN ($FcategoryString)";
+          }
 
-            ?>
-            <div class="room-container">
-              <div class="room-title">
-                <div class="room-sort">
-                  <div class="sort-select">
-                    <span>Sort By</span>
-                    <select name="order" id="sortOrder" class="sort" onchange="sortProduct()">
-                      <option value="" selected disabled>Select options:</option>
-                      <option value="latest" <?php if (isset($_GET['order']) && $_GET['order'] == "latest") {
-                        echo "selected";
-                      } ?>>Latest
-                        Property</option>
-                      <option value="oldest" <?php if (isset($_GET['order']) && $_GET['order'] == "oldest") {
-                        echo "selected";
-                      } ?>>Oldest Property</option>
-                      <option value="lowest" <?php if (isset($_GET['order']) && $_GET['order'] == "lowest") {
-                        echo "selected";
-                      } ?>>Lowest Price</option>
-                      <option value="highest" <?php if (isset($_GET['order']) && $_GET['order'] == "highest") {
-                        echo "selected";
-                      } ?>>Highest Price</option>
-                    </select>
-                  </div>
-                </div>
-
-                <?php
-                if (isset($_GET['order'])) {
-                  if ($_GET['order'] == "latest") {
-                    $sql .= " ORDER BY Property.property_reg_at DESC";
-                  }
-                  if ($_GET['order'] == "oldest") {
-                    $sql .= " ORDER BY Property.property_reg_at ASC";
-                  }
-                  if ($_GET['order'] == "lowest") {
-                    $sql .= " ORDER BY Property.price ASC";
-                  }
-                  if ($_GET['order'] == "highest") {
-                    $sql .= " ORDER BY Property.price DESC";
-                  }
-                } else {
-                  $sql .= " ORDER BY Property.property_reg_at DESC";
-                }
-                $result = mysqli_query($conn, $sql);
-                $totalrows = mysqli_num_rows($result);
-                ?>
-                <div class="room-result">
-                  <span>Showing
-                    <?= $totalrows ?> results
-                  </span>
+          ?>
+          <div class="room-container">
+            <div class="room-title">
+              <div class="room-sort">
+                <div class="sort-select">
+                  <span>Sort By</span>
+                  <select name="order" id="sortOrder" class="sort" onchange="sortProduct()">
+                    <option value="" selected disabled>Select options:</option>
+                    <option value="latest" <?php if (isset($_GET['order']) && $_GET['order'] == "latest") {
+                      echo "selected";
+                    } ?>>Latest
+                      Property</option>
+                    <option value="oldest" <?php if (isset($_GET['order']) && $_GET['order'] == "oldest") {
+                      echo "selected";
+                    } ?>>Oldest Property</option>
+                    <option value="lowest" <?php if (isset($_GET['order']) && $_GET['order'] == "lowest") {
+                      echo "selected";
+                    } ?>>Lowest Price</option>
+                    <option value="highest" <?php if (isset($_GET['order']) && $_GET['order'] == "highest") {
+                      echo "selected";
+                    } ?>>Highest Price</option>
+                  </select>
                 </div>
               </div>
-              <div class="room-lists" id="product-wrapper">
-                <?php
-                while ($row = mysqli_fetch_assoc($result)) {
-                  echo '
-              <div class="room-box">
 
-                <div class="room-content">
-                  <div class="room-img">
-                    <a href="info.php?id=' . $row['PropertyID'], '"><img src="data:image/jpeg;base64,' . $row["mainphoto"] . '" alt="" /></a>
+              <?php
+              if (isset($_GET['order'])) {
+                if ($_GET['order'] == "latest") {
+                  $sql .= " ORDER BY Property.property_reg_at DESC";
+                }
+                if ($_GET['order'] == "oldest") {
+                  $sql .= " ORDER BY Property.property_reg_at ASC";
+                }
+                if ($_GET['order'] == "lowest") {
+                  $sql .= " ORDER BY Property.price ASC";
+                }
+                if ($_GET['order'] == "highest") {
+                  $sql .= " ORDER BY Property.price DESC";
+                }
+              } else {
+                $sql .= " ORDER BY Property.property_reg_at DESC";
+              }
+
+              $result = mysqli_query($conn, $sql);
+              $totalrows = mysqli_num_rows($result);
+              ?>
+              <div class="room-result">
+                <span>Showing
+                  <?= $totalrows ?> results
+                </span>
+              </div>
+            </div>
+            <div class="room-lists" id="product-wrapper">
+              <?php
+              while ($row = mysqli_fetch_assoc($result)) {
+                ?>
+                <div class="room-box">
+                  <div class="room-content">
+                    <div class="room-img">
+                      <a href="info.php?id=<?php echo $row['PropertyID']; ?>"><img
+                          src="data:image/jpeg;base64,<?php echo $row["mainphoto"]; ?>" alt="" /></a>
                       <div class="room-fav">
-                      <a href="wishlist.php?id=' . $row['PropertyID'], '"<i class="fa-regular fa-heart" style="color: #000000;"></i></a>
+                        <a href="wishlist.php?id=<?php echo $row['PropertyID']; ?>"> <i class="fa-regular fa-heart"
+                            style="color: #000000;"></i></a>
                       </div>
                       <div class="view_button">
-                      <a href="info.php?id=' . $row['PropertyID'], '">View</a>
+                        <a href="info.php?id=<?php echo $row['PropertyID']; ?>">View</a>
                       </div>
                     </div>
                     <div class="room-info">
-                      <a href="info.php?id=' . $row['PropertyID'], '" title="' . $row["title"] . '" >
-                        <h4>' . explode(' ', $row["title"])[0] . " " . explode(' ', $row["title"])[1] . ' </h4>
-                    </a>
-                    <div class="info-row">
-                      <div class="info-col-1">
-                        <div class="room-location">
-                          <p class="location" title="' . " Location:" . $row["location"] . '" >
-                              <span class="fas fa-map-pin"></span> ' . $row["location"] . '
+                      <a href="info.php?id=<?php echo $row['PropertyID']; ?>" title="<?= $row["title"]; ?>">
+                        <h4>
+                          <?php echo
+                            explode(' ', $row["title"])[0] . " " . explode(' ', $row["title"])[1]; ?>
+                        </h4>
+                      </a>
+                      <div class="info-row">
+                        <div class="info-col-1">
+                          <div class="room-location">
+                            <p class="location" title="<?= 'Location:' . $row["location"]; ?>">
+                              <span class=" fas fa-map-pin"></span>
+                              <?php echo
+                                $row["location"]; ?>
                             </p>
                           </div>
                         </div>
                         <div class="info-col">
-                          <div class="room-type" title="' . "Category:" . $row["category"] . '">
-                            <img src="./Images/roomLogo3.png" alt="" height="20px" width="20px" />
-                           <span class="small-text"> ' . $row["category"] . '</span>
+                          <div class="room-type" title="<?= 'Category:' . $row["category"]; ?>">
+                            <img src="./Images/roomLogo.png" alt="" height="20px" width="20px" />
+                            <span class="small-text">
+                              <?= $row["category"]; ?>
+                            </span>
                           </div>
                         </div>
-                        <div class="info-col " title="' . "Category:" . "Pice : NPR " . $row["price"] . '">
+                        <div class="info-col " title="<?= 'Category:' . 'Pice : NPR ' . $row["price"]; ?>">
                           <div class="room-price">
                             <img src="./Images/cash.png" alt="" height="20px" width="20px" />
-                            <span class="small-text">' . "NPR " . $row["price"] . '</span>
+                            <span class="small-text">
+                              <?= 'NPR ' .
+                                $row["price"]; ?>
+                            </span>
                           </div>
                         </div>
                       </div>
@@ -344,160 +413,200 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
                   </div>
 
                 </div>
-            
-             ';
-                } ?>
-
                 <?php
-          } else { ?>
-                <div class="room-container">
-                  <div class="room-title">
-                    <div class="room-sort">
-                      <div class="sort-select">
-                        <span>Sort By</span>
-                        <select name="order" id="sortOrder" class="sort" onchange="sortProduct()">
-                          <option value="" selected disabled>Select options:</option>
-                          <option value="latest" <?php if (isset($_GET['order']) && $_GET['order'] == "latest") {
-                            echo "selected";
-                          } ?>>Latest
-                            Property</option>
-                          <option value="oldest" <?php if (isset($_GET['order']) && $_GET['order'] == "oldest") {
-                            echo "selected";
-                          } ?>>Oldest Property</option>
-                          <option value="lowest" <?php if (isset($_GET['order']) && $_GET['order'] == "lowest") {
-                            echo "selected";
-                          } ?>>Lowest Price</option>
-                          <option value="highest" <?php if (isset($_GET['order']) && $_GET['order'] == "highest") {
-                            echo "selected";
-                          } ?>>Highest Price</option>
-                        </select>
-                      </div>
-                    </div>
+              }
 
-                    <?php
-                    if (isset($_GET['order'])) {
-                      if ($_GET['order'] == "latest") {
-                        $order = " ORDER BY Property.property_reg_at DESC";
-                      }
-                      if ($_GET['order'] == "oldest") {
-                        $order = " ORDER BY Property.property_reg_at ASC";
-                      }
-                      if ($_GET['order'] == "lowest") {
-                        $order = " ORDER BY Property.price ASC";
-                      }
-                      if ($_GET['order'] == "highest") {
-                        $order = " ORDER BY Property.price DESC";
-                      }
+              ?>
+
+              <?php
+        } else {
+          ?>
+              <div class="room-container">
+                <div class="room-title">
+                  <div class="room-sort">
+                    <div class="sort-select">
+                      <span>Sort By</span>
+                      <select name="order" id="sortOrder" class="sort" onchange="sortProduct()">
+                        <option value="" selected disabled>Select options:</option>
+                        <option value="latest" <?php if (isset($_GET['order']) && $_GET['order'] == "latest") {
+                          echo "selected";
+                        } ?>>Latest
+                          Property</option>
+                        <option value="oldest" <?php if (isset($_GET['order']) && $_GET['order'] == "oldest") {
+                          echo "selected";
+                        } ?>>Oldest Property</option>
+                        <option value="lowest" <?php if (isset($_GET['order']) && $_GET['order'] == "lowest") {
+                          echo "selected";
+                        } ?>>Lowest Price</option>
+                        <option value="highest" <?php if (isset($_GET['order']) && $_GET['order'] == "highest") {
+                          echo "selected";
+                        } ?>>Highest Price</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <?php
+                  if (isset($_GET['order'])) {
+                    if ($_GET['order'] == "latest") {
+                      $order = " ORDER BY Property.property_reg_at DESC";
+                    } else if ($_GET['order'] == "oldest") {
+                      $order = " ORDER BY Property.property_reg_at ASC";
+                    } else if ($_GET['order'] == "lowest") {
+                      $order = " ORDER BY Property.price ASC";
+                    } else if ($_GET['order'] == "highest") {
+                      $order = " ORDER BY Property.price DESC";
                     } else {
                       $order = " ORDER BY Property.property_reg_at DESC";
                     }
-                    // while ($row = mysqli_fetch_assoc($result)) {
-                    if (isset($_GET['location']) && $_GET['location'] != NULL) {
-                      $products = getLocationPrducts($_GET['location'], $order, $userid);
-                    } else {
-                      $products = getAllPrducts($order, $userid);
-                    }
+                  } else {
+                    $order = " ORDER BY Property.property_reg_at DESC";
+                  }
+                  // while ($row = mysqli_fetch_assoc($result)) {
+                  if (isset($_GET['location']) && $_GET['location'] != NULL) {
 
-                    $totalrows = count($products);
+                    $products = getLocationPrducts($_GET['location'], $order, $userid);
+                  } else {
+                    $products = getAllPrducts($order, $userid);
+                  }
+                  $totalrows = count($products);
+
+                  ?>
+                  <div class="room-result">
+                    <span>Showing
+                      <?= $totalrows ?> results
+                    </span>
+                  </div>
+                </div>
+
+                <div class="room-lists" id="product-wrapper">
+                  <?php
+
+                  foreach ($products as $row) {
                     ?>
-                    <div class="room-result">
-                      <span>Showing
-                        <?= $totalrows ?> results
-                      </span>
+
+                    <div class="room-box">
+                      <div class="room-content">
+
+                        <form action="#" method="POST">
+                          <div class="room-img">
+                            <a href="info.php?id=<?php echo $row['PropertyID']; ?>"><img
+                                src="data:image/jpeg;base64,<?php echo $row["mainphoto"]; ?>" alt="" /></a>
+
+                            <div class="room-fav">
+                              <input type="hidden" name="pid" value="<?php echo $row['PropertyID']; ?>">
+                              <input type="hidden" name="uid" value="<?php echo $userid; ?>">
+                              <?php
+                              $wishlist = getWishlist($row['PropertyID'], $userid);
+                              if ($wishlist) {
+                                ?>
+                                <button type="submit" name="wishlist_delete" id="wishlist-btn">
+                                  <i class="fa-solid fa-heart" style="color: #ff0000;"></i>
+                                </button>
+                                <?
+                              } else {
+                                ?>
+                                <button type="submit" name="wishlist_insert" id="wishlist-btn">
+                                  <i class="fa-regular fa-heart" style="color: #000000;"></i>
+                                </button>
+                                <?php
+
+                              } ?>
+                            </div>
+
+                            <div class="view_button">
+                              <a href="info.php?id=<?php echo $row['PropertyID']; ?>">View</a>
+                            </div>
+                          </div>
+
+                          <div class="room-info">
+                            <a href="info.php?id=<?php echo $row['PropertyID']; ?>" title="<?= $row["title"]; ?>">
+                              <h4>
+                                <?php echo
+                                  explode(' ', $row["title"])[0] . " " . explode(' ', $row["title"])[1]; ?>
+                              </h4>
+                            </a>
+                            <div class="info-row">
+                              <div class="info-col-1">
+                                <div class="room-location">
+                                  <p class="location" title="<?= 'Location:' . $row["location"]; ?>">
+                                    <span class=" fas fa-map-pin"></span>
+                                    <?php echo
+                                      $row["location"]; ?>
+                                  </p>
+                                </div>
+                              </div>
+                              <div class="info-col">
+                                <div class="room-type" title="<?= 'Category:' . $row["category"]; ?>">
+                                  <img src="./Images/roomLogo.png" alt="" height="20px" width="20px" />
+                                  <span class="small-text">
+                                    <?= $row["category"]; ?>
+                                  </span>
+                                </div>
+                              </div>
+                              <div class="info-col " title="<?= 'Category:' . 'Pice : NPR ' . $row["price"]; ?>">
+                                <div class="room-price">
+                                  <img src="./Images/cash.png" alt="" height="20px" width="20px" />
+                                  <span class="small-text">
+                                    <?= 'NPR ' .
+                                      $row["price"]; ?>
+                                  </span>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </form>
+                      </div>
+
                     </div>
-                  </div>
-                  <div class=" room-lists" id="product-wrapper">
+
+
                     <?php
-
-                    foreach ($products as $row) {
-                      echo '
-              <div class="room-box">
-                <div class="room-content">
-                  <div class="room-img">
-                    <a href="info.php?id=' . $row['PropertyID'], '"><img src="data:image/jpeg;base64,' . $row["mainphoto"] . '" alt="" /></a>
-                    <div class="room-fav">
-                    <a href="wishlist.php?id=' . $row['PropertyID'], '"<i class="fa-regular fa-heart" style="color: #000000;"></i></a>
-                    </div>
-                    <div class="view_button">
-                    <a href="info.php?id=' . $row['PropertyID'], '">View</a>
-                    </div>
-                  </div>
-                  <div class="room-info">
-                    <a href="info.php?id=' . $row['PropertyID'], '" title="' . $row["title"] . '" >
-                      <h4>' . explode(' ', $row["title"])[0] . " " . explode(' ', $row["title"])[1] . '</h4>
-                    </a>
-                    <div class="info-row">
-                      <div class="info-col-1">
-                        <div class="room-location">
-                          <p class="location" title="' . "Location:" . $row["location"] . '" >
-                            <span class="fas fa-map-pin"></span> ' . $row["location"] . '
-                          </p>
-                        </div>
-                      </div>
-                      <div class="info-col">
-                        <div class="room-type" title="' . "Category:" . $row["category"] . '">
-                          <img src="./Images/roomLogo.png" alt="" height="20px" width="20px" />
-                          <span class="small-text"> ' . $row["category"] . '</span>
-                        </div>
-                      </div>
-                      <div class="info-col " title="' . "Category:" . "Pice : NPR " . $row["price"] . '">
-                        <div class="room-price">
-                          <img src="./Images/cash.png" alt="" height="20px" width="20px" />
-                          <span class="small-text"> ' . $row["price"] . '</span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
+                  }
+        } ?>
               </div>
-            
-           ';
-                    }
-          } ?>
-                </div>
-                <div class="room-footer">
-                  <div class="room-nav">
-                    <div class="nav">
-                      <ul class="room-page">
-                        <li class="page-item">
-                          <span class="page-link">
-                            < </span>
-                        </li>
-                        <li class="page-item">
-                          <a href="#" class="page-link">1</a>
-                        </li>
-                        <li class="page-item">
-                          <a href="#" class="page-link">2</a>
-                        </li>
-                        <li class="page-item">
-                          <a href="#" class="page-link">3</a>
-                        </li>
-                        <li class="page-item">
-                          <a href="#" class="page-link">4</a>
-                        </li>
-                        <li class="page-item">
-                          <a href="#" class="page-link">5</a>
-                        </li>
-                        <li class="page-item">
-                          <a href="#" class="page-link">6</a>
-                        </li>
-                        <li class="page-item">
-                          <a href="#" class="page-link">7</a>
-                        </li>
-                        <li class="page-item">
-                          <span class="page-link"> > </span>
-                        </li>
-                      </ul>
-                    </div>
+
+              <div class="room-footer">
+                <div class="room-nav">
+                  <div class="nav">
+                    <ul class="room-page">
+                      <li class="page-item">
+                        <span class="page-link">
+                          < </span>
+                      </li>
+                      <li class="page-item">
+                        <a href="#" class="page-link">1</a>
+                      </li>
+                      <li class="page-item">
+                        <a href="#" class="page-link">2</a>
+                      </li>
+                      <li class="page-item">
+                        <a href="#" class="page-link">3</a>
+                      </li>
+                      <li class="page-item">
+                        <a href="#" class="page-link">4</a>
+                      </li>
+                      <li class="page-item">
+                        <a href="#" class="page-link">5</a>
+                      </li>
+                      <li class="page-item">
+                        <a href="#" class="page-link">6</a>
+                      </li>
+                      <li class="page-item">
+                        <a href="#" class="page-link">7</a>
+                      </li>
+                      <li class="page-item">
+                        <span class="page-link"> > </span>
+                      </li>
+                    </ul>
                   </div>
                 </div>
               </div>
-
             </div>
+
           </div>
         </div>
-  </form>
+      </div>
+      <!-- </form> -->
 </body>
 <script src="search.js?v=<? echo $version ?>"></script>
 

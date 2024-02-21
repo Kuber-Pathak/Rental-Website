@@ -46,9 +46,9 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
                 </div>
                 <ul class="middle-side">
                     <li>
-                        <a href="#">WhishList <i class="fa-regular fa-heart"></i></a>
+                        <a href="wishlist.php">WhishList <i class="fa-regular fa-heart"></i></a>
                     </li>
-                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="contact.php">Contact Us</a></li>
                     <li>
                         <a href="list.php">List a place <i class="fa-solid fa-plus"></i></a>
                     </li>
@@ -64,10 +64,13 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
                     </div>
                     <div class="dropdown">
                         <ul>
-                            <li><a href="#"> Notification</a></li>
-                            <li><a href="profile.php"> Profile</a></li>
-                            <li><a href="#"> Help Center</a></li>
-                            <li><a href="logout.php" class="user"> Log Out</a></li>
+                            <li><a href="profile.php"><i class="fa-solid fa-user"></i> Profile</a></li>
+                            <li><a href="wishlist.php"><i class="fa-solid fa-heart"></i> WishList</a></li>
+                            <li><a href="contact.php"><i class="fa-solid fa-message"></i> Contact Us</a></li>
+                            <li><a href="#"><i class="fa-solid fa-circle-info"></i> Help Center</a></li>
+                            <li><a href="logout.php" class="user"><i class="fa-solid fa-arrow-right-from-bracket"></i>
+                                    Log Out</a>
+                            </li>
                         </ul>
                     </div>
                     <!-- <a href="#" class="left-btn btn">Sign up</a> -->
@@ -77,6 +80,20 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
     </header>
     <div class="container">
         <div class="main-container center">
+            <?php
+            if (isset($_SESSION['sucess'])) {
+                echo '
+    <div class="sucess">
+    <p class="sucess_msg" id="format">
+    <i class="fa-solid fa-check"></i> 
+    ' . $_SESSION['sucess'] . '
+    </p>
+    </div>
+
+    ';
+                unset($_SESSION['sucess']);
+            }
+            ?>
             <div class="row">
                 <div class="left-column">
                     <div class="left-data">
@@ -92,9 +109,12 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
                         </div>
                         <div class="dashboard">
                             <ul class="dashboard-menu">
-                                <li><a href="">Your Properties <i class="fa-solid fa-arrow-right"></i></a>
+                                <li class="active"><a href=""><span> Your Properties </span><i
+                                            class="fa-solid fa-arrow-right"></i></a>
                                 </li>
-                                <li><a href="">Booked Properties <i class="fa-solid fa-arrow-right"></i></a></li>
+                                <li><a href="profile_msg.php"><span> Your Messages</span> <i
+                                            class="fa-solid fa-arrow-right"></i></a>
+                                </li>
                             </ul>
                         </div>
                     </div>
@@ -111,7 +131,7 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
                               <div class="room-img">
                                 <a href="info.php?id=' . $row['PropertyID'], '"><img src="data:image/jpeg;base64,' . $row["mainphoto"] . '" alt="" /></a>
                                 <div class="room-fav">
-                                <a href="wishlist.php?id=' . $row['PropertyID'], '"<i class="fa-regular fa-heart" style="color: #000000;"></i></a>
+                                <a href=""<i class="fa-regular fa-heart" style="color: #000000;"></i></a>
                                 </div>
                                 <div class="view_button">
                                 <a href="info.php?id=' . $row['PropertyID'], '">View</a>

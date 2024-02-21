@@ -24,6 +24,7 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
 
 <body>
 
+
   <header>
 
     <div id="navbar">
@@ -42,10 +43,12 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
           </div>
           <div class="dropdown">
             <ul>
-              <li><a href="#"> Notification</a></li>
-              <li><a href="profile.php"> Profile</a></li>
-              <li><a href="#"> Help Center</a></li>
-              <li><a href="logout.php" class="user"> Log Out</a></li>
+              <li><a href="profile.php"><i class="fa-solid fa-user"></i> Profile</a></li>
+              <li><a href="wishlist.php"><i class="fa-solid fa-heart"></i> WishList</a></li>
+              <li><a href="contact.php"><i class="fa-solid fa-message"></i> Contact Us</a></li>
+              <li><a href="#"><i class="fa-solid fa-circle-info"></i> Help Center</a></li>
+              <li><a href="logout.php" class="user"><i class="fa-solid fa-arrow-right-from-bracket"></i> Log Out</a>
+              </li>
             </ul>
           </div>
           <!-- <a href="#" class="left-btn btn">Sign up</a> -->

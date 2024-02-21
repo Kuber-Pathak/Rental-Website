@@ -58,22 +58,30 @@ function CheckPassword(password) {
   // Minimum eight characters, at least one uppercase letter, one lowercase letter, one number and one special character:
   const pass_rgex =
     "^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$";
-
   if (password.value.match(pass_rgex)) {
     return true;
-  } else if (password.value == "") {
-    document.querySelector("#format").innerHTML =
-      " * Enter the credentials first.";
-    return false;
   } else {
-    document.querySelector("#format").innerHTML =
-      " * Password must contain:<br> Minimum 8 characters<br> 1 uppercase<br> 1 lowercase<br> 1 number <br> 1special character.";
+    let format = document.querySelector("#format");
+    format.innerHTML =
+      " ** Password must contain:<br> Minimum 8 characters<br> 1 uppercase<br> 1 lowercase<br> 1 number <br> 1special character.";
+    event.preventDefault();
+    setTimeout(() => {
+      format.classList.toggle("show");
+    }, 1.5);
 
-    document.getElementById("format").style.padding = "10px";
-    return false;
+    setTimeout(() => {
+      format.classList.toggle("show");
+    }, 6000);
   }
 }
 
+// for error message
+function hideMessage() {
+  document.querySelector(".error").style.display = "none";
+}
+setTimeout("hideMessage()", 3000);
+
+//
 let show = document.getElementById("ishow");
 let hide = document.getElementById("ihide");
 hide.style.display = "none";

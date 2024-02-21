@@ -179,6 +179,7 @@ ul li a:hover{
     display: flex;
     justify-content: center;
     align-items: center;
+    text-transform: capitalize;
 }
 .dropdown ul li{
     padding: 20px;
@@ -186,6 +187,46 @@ ul li a:hover{
 }
 .main{
     margin-top: 50px;
+}
+.sucess{
+    /* display: none; */
+    position: absolute;
+    top:9rem;
+    left: 0px;
+    max-width: 100%;
+    transform: translateX(-200%);
+    /* transform: translateY(-50%,-50%); */
+    /* transform: translate(180%,180%); */
+    z-index: 999;
+    animation:  show_slide 4s ease-in-out forwards alternate;
+}
+.sucess_msg{
+    margin: 0px 10px 0px;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #51A351;
+    border: 1px solid rgba(0, 0, 0, .1);
+    box-shadow: 0 0 12px #999;
+    color: #fff;
+    opacity: .8;
+    font-size: 1rem;
+}
+/* .sucess.show{
+    display: block;
+    
+} */
+@keyframes show_slide {
+    20% {
+		transform: translateX(-100%);
+    }
+	50%,80% {
+		transform: translateX(0%);
+	} 
+    100%{
+        transform: translateX(-100%);
+    }
+
+    
 }
 .row{
     display: flex;

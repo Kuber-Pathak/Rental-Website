@@ -12,3 +12,7 @@ document.querySelector(".left-side").addEventListener("click", () => {
     Dropdown.classList.toggle("hide");
   }
 });
+
+let links = document.querySelectorAll(".page-link");
+let bodyID = parseInt(document.body.id) ;
+links[bodyID].classList.add("active");

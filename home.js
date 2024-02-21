@@ -3,6 +3,15 @@ window.addEventListener("scroll", function () {
   header.classList.toggle("sticky", window.scrollY > 0);
 });
 
+let option_labels = document.querySelectorAll(".option-label");
+
+option_labels.forEach((option_label) => {
+  option_label.addEventListener("click", () => {
+    // document.querySelector(".active")?.classList.remove("active");
+    option_label.classList.toggle("active");
+  });
+});
+
 let Dropdown = document.querySelector(".dropdown");
 Dropdown.classList.toggle("hide");
 document.querySelector(".left-side").addEventListener("click", () => {
@@ -24,3 +33,11 @@ function validateForm(location) {
     return false;
   }
 }
+
+//
+setTimeout(() => {
+  document.querySelector(".sucess").classList.toggle("show");
+}, 1.5);
+setTimeout(() => {
+  document.querySelector(".sucess").classList.toggle("show");
+}, 3000);

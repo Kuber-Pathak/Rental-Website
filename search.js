@@ -54,16 +54,26 @@ document.querySelector(".left-side").addEventListener("click", () => {
 function sortProduct() {
   var select = document.querySelector("#sortOrder");
   var selectedValue = select.options[select.selectedIndex].value;
-  for (var i = 0; i < select.options.length; i++) {
-    option = select.options[i];
-    if ((option.value = selectedValue)) {
-      option.setAttribute("selected", true);
-    }
-  }
+  // for (var i = 0; i < select.options.length; i++) {
+  //   option = select.options[i];
+  //   if ((option.value = selectedValue)) {
+  //     option.setAttribute("selected", true);
+  //   }
+  // }
   if (window.location.href.includes("order=")) {
     newURL = window.location.href.split("order")[0] + "order";
     window.history.replaceState({}, document.title, newURL);
     window.location.href = newURL + "=" + selectedValue;
+  } else if (
+    window.location.href.includes("?") &&
+    !window.location.href.includes("#")
+  ) {
+    window.location.href = window.location.href + "&order=" + selectedValue;
+  } else if (window.location.href.includes("#")) {
+    const urlWithoutHash = window.location.href.split("#")[0];
+    const separator = urlWithoutHash.includes("?") ? "&" : "?"; // Determine if we need to start a query string or append
+    window.location.href =
+      urlWithoutHash + separator + "order=" + selectedValue;
   } else {
     window.location.href = window.location.href + "?order=" + selectedValue;
   }
