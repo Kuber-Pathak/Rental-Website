@@ -318,8 +318,20 @@ nav{
 .message-box{
     margin: 10px;
     /* background-color: lightgreen; */
-    background-color: rgb(200, 250, 253);
+    /* background-color: rgb(200, 250, 253); */
+    box-shadow: 0 6px 20px rgba(0, 0, 0,0.2);
     border-radius: 30px;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+.message-date{
+    position: absolute;
+    right: 30px;
+    top: 12px;
+}
+.message-date span{ 
+    
 }
 .message-content{
  padding: 10px;
@@ -370,15 +382,58 @@ nav{
 
 }
 .total-message{
-    display: flex;
-    justify-content: center;
-    align-items: center;
     margin-top: 10px;
+    margin-left: 10px;
+    
 }
 .total-message p {
     padding: 20px;
-    background-color: rgba(134, 239, 244, 0.633);
-    font-size: 1.1rem;
-    font-weight: 600;
+    /* background-color: rgba(134, 239, 244, 0.633); */
+    background-color: #CDE8F5;
+    /* background-color: #F8F3D6; */
+    font-weight: bold;
+    box-shadow: 0 6px 20px rgba(0, 0, 0,0.2);
     border-radius: 30px;
+    margin-bottom: 10px;
+}
+
+.total-message p i {
+    padding-right: 8px;
+    
+    font-weight: 600;
+}
+.profile-data{
+    background: #fff;
+    border-radius: 25px;
+    /* padding: 32px 24px;
+     */
+     padding-left: 15px;
+}
+.profile-info{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+.profile-photo{
+    background: linear-gradient(112.1deg, rgb(32, 38, 57) 11.4%, rgb(63, 76, 119) 70.2%);
+    color: #eeeeee;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    font-weight: 600;
+    font-size: 1.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-transform: capitalize;
+    box-shadow: 0 6px 20px rgba(0, 0, 0,0.2);
+}
+.user_profile{
+    font-size: 31.9px;
+    line-height: 36.2799px;
+    letter-spacing: 0px;
+    text-transform: capitalize;
+    font-weight: 600;
 }

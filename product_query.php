@@ -162,4 +162,41 @@ function getTotalMessage($uid)
       return mysqli_num_rows($result);
 }
 
+function getAllProperties()
+{
+      include 'connect.php';
+      $sql = "SELECT * FROM Property 
+        INNER JOIN Amenities 
+        ON Amenities.PropertyID = Property.PropertyID
+        INNER JOIN  LocalAreaFacility
+        ON LocalAreaFacility.PropertyID = Property.PropertyID
+        INNER JOIN user_cred
+        ON Property.user_id = user_cred.user_id
+        ";
+      $result = mysqli_query($conn, $sql);
+      if (mysqli_num_rows($result) > 0) {
+            while ($row = mysqli_fetch_assoc($result)) {
+                  $products[] = $row;
+            }
+            return $products;
+      } else {
+            return [];
+      }
+}
+function getAllUsers()
+{
+      include 'connect.php';
+      $sql = "SELECT * FROM user_cred 
+        ";
+      $result = mysqli_query($conn, $sql);
+      if (mysqli_num_rows($result) > 0) {
+            while ($row = mysqli_fetch_assoc($result)) {
+                  $products[] = $row;
+            }
+            return $products;
+      } else {
+            return [];
+      }
+}
+
 ?>

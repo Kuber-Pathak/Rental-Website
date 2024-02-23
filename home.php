@@ -3,8 +3,8 @@ session_start();
 include 'connect.php';
 include 'config.php';
 if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
-  // header(location:login.php);
-  echo "<script> window.location.href='signup.php';</script>";
+  header("Location:signup.php");
+  // echo "<script> window.location.href='signup.php';</script>";
   exit;
 } else {
   $userid = $_SESSION['userid'];

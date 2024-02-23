@@ -536,8 +536,8 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
                           $user_result = mysqli_query($conn, $user_sql);
 
                           while ($user_row = mysqli_fetch_assoc($user_result)) {
-
                             ?>
+
                             <div class="profile-image">
                               <input type="hidden" name="toUser" value="<?php echo $row['user_id']; ?>">
                               <img src="Images/profile.jpg" alt="" />

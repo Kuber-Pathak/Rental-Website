@@ -17,13 +17,18 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
         $result1 = mysqli_query($conn, $sql1);
         $sql2 = "DELETE FROM Amenities WHERE PropertyID = '$pid'";
         $result2 = mysqli_query($conn, $sql2);
-        $sql3 = "DELETE FROM Property WHERE PropertyID = '$pid'";
-        $result3 = mysqli_query($conn, $sql3);
-        if ($result3) {
-            echo 'deleted sucessfully';
-        } else {
-            echo 'not deleted sucessfully';
-        }
+        $sql3 = "DELETE FROM wishlist_info WHERE PropertyID = '$pid'";
+        $result4 = mysqli_query($conn, $sql3);
+        $sql4 = "DELETE FROM user_message WHERE PropertyID = '$pid'";
+        $result4 = mysqli_query($conn, $sql4);
+        $sql5 = "DELETE FROM Property WHERE PropertyID = '$pid'";
+        $result5 = mysqli_query($conn, $sql5);
+
+        // if ($result4) {
+        //     echo 'deleted sucessfully';
+        // } else {
+        //     echo 'not deleted sucessfully';
+        // }
     }
 }
 ?>

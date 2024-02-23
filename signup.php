@@ -8,6 +8,7 @@ if (isset($_POST['usubmit'])) {
     $udate = $_POST['ubirthDate'];
     $uemail = $_POST['uemail'];
     $upassword = $_POST['upassword'];
+    $hashedPassword = password_hash($upassword, PASSWORD_DEFAULT);
     $usertype = $_POST['usertype'];
     if (!empty($ufname) && !empty($ulname) && !empty($uemail) && !empty($udate) && !empty($upassword) && !empty($ugender)) {
         $sql = "SELECT * FROM user_cred WHERE user_email='$uemail'";
@@ -16,8 +17,7 @@ if (isset($_POST['usubmit'])) {
             $emailerror = "Email Already exists.";
         } else {
 
-            $sql = "INSERT INTO user_cred (user_fname,user_lname,user_gender,user_dob,user_email,user_password,usertype) VALUES ( '$ufname' , '$ulname ', '$ugender', '$udate','$uemail','$upassword','$usertype')";
-
+            $sql = "INSERT INTO user_cred (user_fname,user_lname,user_gender,user_dob,user_email,user_password,usertype) VALUES ( '$ufname' , '$ulname ', '$ugender', '$udate','$uemail','$hashedPassword','$usertype')";
             $result = mysqli_query($conn, $sql);
 
             if ($result) {
@@ -30,26 +30,58 @@ if (isset($_POST['usubmit'])) {
         }
     }
 }
+// if (isset($_POST['isubmit'])) {
+//     session_start();
+//     $iemail = $_POST['iemail'];
+//     $ipassword = $_POST['ipassword'];
+//     if (!empty($iemail) && !empty($ipassword)) {
+//         $sql = "SELECT * FROM user_cred WHERE user_email='$iemail' AND user_password='$ipassword'";
+//         $result = mysqli_query($conn, $sql);
+//         if (mysqli_num_rows($result) > 0) {
+//             $row = mysqli_fetch_assoc($result);
+//             $_SESSION['userid'] = $row['user_id'];
+//             $_SESSION['name'] = $row['user_fname'];
+//             $_SESSION['lname'] = $row['user_lname'];
+//             $_SESSION['usertype'] = $row['usertype'];
+//             $_SESSION['logged_in'] = true;
+//             // header("Location:home.php");
+//             echo "<script> window.location.href='home.php';</script>";
+//         } else {
+//             $match = "** Invalid email or password !!";
+//             //     echo '<script>
+//             //     alert("** Invalid email or password !!");
+//             //   </script>';
+//         }
+//     }
+// }
 if (isset($_POST['isubmit'])) {
     session_start();
     $iemail = $_POST['iemail'];
     $ipassword = $_POST['ipassword'];
+
     if (!empty($iemail) && !empty($ipassword)) {
-        $sql = "SELECT * FROM user_cred WHERE user_email='$iemail' AND user_password='$ipassword'";
+        // Fetch the hashed password from the database based on the email
+        $sql = "SELECT user_id, user_password, user_fname, user_lname, usertype FROM user_cred WHERE user_email='$iemail'";
         $result = mysqli_query($conn, $sql);
+
         if (mysqli_num_rows($result) > 0) {
             $row = mysqli_fetch_assoc($result);
-            $_SESSION['userid'] = $row['user_id'];
-            $_SESSION['name'] = $row['user_fname'];
-            $_SESSION['lname'] = $row['user_lname'];
-            $_SESSION['logged_in'] = true;
-            // header("Location:home.php");
-            echo "<script> window.location.href='home.php';</script>";
-        } else {
-            $match = "** Invalid email or password !!";
-            //     echo '<script>
-            //     alert("** Invalid email or password !!");
-            //   </script>';
+            // Verify the entered password against the stored hash
+            if (password_verify($ipassword, $row['user_password'])) {
+                $_SESSION['userid'] = $row['user_id'];
+                $_SESSION['name'] = $row['user_fname'];
+                $_SESSION['lname'] = $row['user_lname'];
+                $_SESSION['usertype'] = $row['usertype'];
+                $_SESSION['logged_in'] = true;
+                if ($row['usertype'] == "user") {
+                    header("Location:home.php");
+                    // echo "<script> window.location.href='home.php';</script>";
+                } else {
+                    header("Location:admin.php");
+                }
+            } else {
+                $match = "** Invalid email or password !!";
+            }
         }
     }
 }

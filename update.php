@@ -730,7 +730,7 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
         $property_sql .= " WHERE PropertyID='$propertyID'";
         $property_result = mysqli_query($conn, $property_sql);
         if ($property_result) {
-            echo 'sucess';
+            header("Location: profile.php");
         } else {
             echo 'failure';
         }

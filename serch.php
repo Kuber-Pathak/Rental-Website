@@ -129,7 +129,7 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
         <img src="./Images/room.jpg" alt="" id="perfect" />
       </div>
       <div class="main-content">
-        <form action="#" method="GET" id="searchForm">
+        <form action="" method="GET" id="searchForm">
           <div class="search">
 
             <div class="search-container">
@@ -487,7 +487,7 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
                     <div class="room-box">
                       <div class="room-content">
 
-                        <form action="#" method="POST">
+                        <form action="" method="POST">
                           <div class="room-img">
                             <a href="info.php?id=<?php echo $row['PropertyID']; ?>"><img
                                 src="data:image/jpeg;base64,<?php echo $row["mainphoto"]; ?>" alt="" /></a>
@@ -565,7 +565,7 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
         } ?>
               </div>
 
-              <div class="room-footer">
+              <!-- <div class="room-footer">
                 <div class="room-nav">
                   <div class="nav">
                     <ul class="room-page">
@@ -600,7 +600,7 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
                     </ul>
                   </div>
                 </div>
-              </div>
+              </div> -->
             </div>
 
           </div>

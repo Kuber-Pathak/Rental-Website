@@ -58,7 +58,7 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
                             <li><a href="profile.php"><i class="fa-solid fa-user"></i> Profile</a></li>
                             <li><a href="wishlist.php"><i class="fa-solid fa-heart"></i> WishList</a></li>
                             <li><a href="contact.php"><i class="fa-solid fa-message"></i> Contact Us</a></li>
-                            <li><a href="#"><i class="fa-solid fa-circle-info"></i> Help Center</a></li>
+                            <li><a href="#"><i class="fa-solid fa-circle-info "></i> Help Center</a></li>
                             <li><a href="logout.php" class="user"><i class="fa-solid fa-arrow-right-from-bracket"></i>
                                     Log Out</a>
                             </li>
@@ -98,7 +98,7 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
                 </div>
                 <div class=" right-column">
                     <div class="total-message">
-                        <p>You have
+                        <p><i class="fa-solid fa-circle-info fa-xl"></i>Info: You have
                             <?= getTotalMessage($userid); ?> messages.
                         </p>
                     </div>
@@ -116,6 +116,13 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
                         foreach ($messages as $row) {
                             ?>
                             <div class="message-box">
+                                <div class="profile-data">
+                                    <div class="profile-info">
+                                        <div class="user-profile"><span class="profile-photo">
+                                                <?php echo $row['fromName'][0]; ?>
+                                            </span></div>
+                                    </div>
+                                </div>
                                 <div class="message-content">
                                     <h1>From :
                                         <?= $row['fromName']; ?>
@@ -123,6 +130,27 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
                                     <p>
                                         <?= $row['message']; ?>
                                     </p>
+                                </div>
+                                <div class="message-date">
+                                    <span>
+                                        <?php
+                                        $dateTimeString = $row['msg_reg_at'];
+
+                                        // Convert the datetime string into a timestamp
+                                        $timestamp = strtotime($dateTimeString);
+                                        // Format the timestamp to only show the date part
+                                        $dateOnly = date('Y-m-d', $timestamp);
+
+                                        echo $dateOnly;
+                                        ?>
+                                    </span>
+                                    <span>
+                                        <?php
+                                        // Format the timestamp to only show the hour and minute in 12-hour format with AM or PM
+                                        $timeOnly = date('h:i A', $timestamp);
+                                        echo " at " . $timeOnly;
+                                        ?>
+                                    </span>
                                 </div>
                             </div>
                         <?php } ?>
