@@ -53,36 +53,54 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
             <div id="navbar">
               <nav class="center">
                 <div class="logo">
-                  <a href="home.php"><img src="Images/logo3.png" alt="Logo" width="112" /></a>
+                  <?php
+                  if ($_SESSION['usertype'] == "user") {
+                    ?>
+                    <a href="home.php"><img src="Images/logo3.png" alt="Logo" width="112" /></a>
+                  <?php } else { ?>
+                    <a href="admin.php"><img src="Images/logo3.png" alt="Logo" width="112" /></a>
+                  <?php } ?>
                 </div>
-                <ul class="middle-side">
-                  <li>
-                    <a href="wishlist.php">WhishList <i class="fa-regular fa-heart"></i></a>
-                  </li>
-                  <li><a href="contact.php">Contact Us</a></li>
-                  <li>
-                    <a href="list.php">List a place <i class="fa-solid fa-plus"></i></a>
-                  </li>
-                </ul>
+                <?php
+                if ($_SESSION['usertype'] == "user") {
+                  ?>
+                  <ul class="middle-side">
+                  <li><a href="home.php">Home</a></li>
+                    <li>
+                      <a href="wishlist.php">WhishList <i class="fa-regular fa-heart"></i></a>
+                    </li>
+                    <li>
+                      <a href="list.php">List a place <i class="fa-solid fa-plus"></i></a>
+                    </li>
+                  </ul>
+                <?php } ?>
                 <div class="left-side">
                   <div class="user-content">
                     <div class="user-profile">
-                      <i class="fa-solid fa-bars"></i>
+                      <?php
+                      if ($_SESSION['usertype'] == "user") {
+                        ?>
+                        <i class="fa-solid fa-bars"></i>
+                      <?php } ?>
                       <span class="username">
                         <?php echo $username[0]; ?>
                       </span>
                     </div>
                   </div>
-                  <div class="dropdown">
-                    <ul>
-                      <li><a href="profile.php"><i class="fa-solid fa-user"></i> Profile</a></li>
-                      <li><a href="wishlist.php"><i class="fa-solid fa-heart"></i> WishList</a></li>
-                      <li><a href="contact.php"><i class="fa-solid fa-message"></i> Contact Us</a></li>
-                      <li><a href="#"><i class="fa-solid fa-circle-info"></i> Help Center</a></li>
-                      <li><a href="logout.php" class="user"><i class="fa-solid fa-arrow-right-from-bracket"></i> Log Out</a>
-                      </li>
-                    </ul>
-                  </div>
+                  <?php
+                  if ($_SESSION['usertype'] == "user") {
+                    ?>
+                    <div class="dropdown">
+                      <ul>
+                        <li><a href="profile.php"><i class="fa-solid fa-user"></i> Profile</a></li>
+                        <li><a href="wishlist.php"><i class="fa-solid fa-heart"></i> WishList</a></li>
+                        <li><a href="contact.php"><i class="fa-solid fa-message"></i> Contact Us</a></li>
+                        <li><a href="#"><i class="fa-solid fa-circle-info"></i> Help Center</a></li>
+                        <li><a href="logout.php" class="user"><i class="fa-solid fa-arrow-right-from-bracket"></i> Log Out</a>
+                        </li>
+                      </ul>
+                    </div>
+                  <?php } ?>
                   <!-- <a href="#" class="left-btn btn">Sign up</a> -->
                 </div>
               </nav>
@@ -507,10 +525,10 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
                     } else {
                       $message = $_POST['message'];
                       $toUser = $_POST['toUser'];
-                      $msg_check = "SELECT * FROM user_message WHERE message='$message' AND fromName='$username' AND user_id='$toUser' AND PropertyID='$propertyID' ";
+                      $msg_check = "SELECT * FROM user_message WHERE message='$message' AND fromName='$userid' AND user_id='$toUser' AND PropertyID='$propertyID' ";
                       $msg_check_result = mysqli_query($conn, $msg_check);
                       if (mysqli_num_rows($msg_check_result) == 0) {
-                        $msg_sql = "INSERT INTO user_message (message,PropertyID,fromName,user_id) VALUES('$message','$propertyID','$username','$toUser')";
+                        $msg_sql = "INSERT INTO user_message (message,PropertyID,fromName,user_id) VALUES('$message','$propertyID','$userid','$toUser')";
                         $msg_result = mysqli_query($conn, $msg_sql);
                         if ($msg_result) {
                           $sucess = "Message sent sucessfully";
@@ -522,7 +540,7 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
                   <?php
                   $check_sql = "SELECT * FROM Property WHERE user_id='$userid' AND PropertyID ='$propertyID'";
                   $check_result = mysqli_query($conn, $check_sql);
-                  if (mysqli_num_rows($check_result) == 0) {
+                  if (mysqli_num_rows($check_result) == 0 && $_SESSION['usertype'] == "user") {
                     ?>
                     <form action="" method="POST">
                       <div class="message-form">

@@ -27,7 +27,7 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
         <div id="navbar">
             <nav>
                 <div class="logo">
-                    <a href="home.php"><img src="./Images/logo3.png" alt="Logo" width="112" /></a>
+                    <a href="admin.php"><img src="./Images/logo3.png" alt="Logo" width="112" /></a>
                 </div>
                 <div class="left-side">
                     <div class="user-content">

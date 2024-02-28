@@ -2,6 +2,7 @@
 session_start();
 include 'connect.php';
 include 'config.php';
+include 'product_query.php';
 if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
     // header(location:login.php);
     echo "<script> window.location.href='signup.php';</script>";
@@ -63,21 +64,26 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
                     <div class="left-data">
                         <div class="dashboard">
                             <ul class="dashboard-menu">
-                                <li class="active"><a href=""><span><i class="fa-solid fa-layer-group"></i> Dashboard
-                                        </span><i class="fa-solid fa-arrow-right"></i></a>
+                                <li class="active"><a href=""><span><i class="fa-solid fa-layer-group"></i>
+                                            <p>Dashboard</p>
+                                        </span><i class="fa-solid fa-arrow-right dashboard-icon"></i></a>
                                 </li>
                                 <li><a href="admin_properties.php"><span><i class="fa-solid fa-house-chimney"></i>
-                                            Properties</span> <i class="fa-solid fa-arrow-right"></i></a>
+                                            <p>Properties</p>
+                                        </span> <i class="fa-solid fa-arrow-right dashboard-icon"></i></a>
                                 </li>
-                                <li><a href="admin_user.php"><span><i class="fa-solid fa-user"></i> Users</span> <i
-                                            class="fa-solid fa-arrow-right"></i></a>
+                                <li><a href="admin_user.php"><span><i class="fa-solid fa-user"></i>
+                                            <p>Users</p>
+                                        </span> <i class="fa-solid fa-arrow-right dashboard-icon"></i></a>
                                 </li>
                                 <li><a href="admin_msg.php"><span><i class="fa-solid fa-message"></i>
-                                            Messages </span>
-                                        <i class="fa-solid fa-arrow-right"></i></a>
+                                            <p>Messages</p>
+                                        </span>
+                                        <i class="fa-solid fa-arrow-right dashboard-icon"></i></a>
                                 </li>
                                 <li><a href="logout.php"><span><i class="fa-solid fa-arrow-right-from-bracket"></i>
-                                            Log Out</span><i class="fa-solid fa-arrow-right"></i></a>
+                                            <p>Log Out</p>
+                                        </span><i class="fa-solid fa-arrow-right dashboard-icon"></i></a>
                                 </li>
                             </ul>
                         </div>
@@ -93,7 +99,10 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
                                 <div class="count-data">
                                     <p>Total Properties</p>
                                     <span>
-                                        <?= 11; ?>
+                                        <?php
+                                        $property_num = getAllProperties();
+                                        echo count($property_num);
+                                        ?>
                                     </span>
                                 </div>
 
@@ -107,7 +116,10 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
                                 <div class="count-data">
                                     <p>Total Users</p>
                                     <span>
-                                        <?= 11; ?>
+                                        <?php
+                                        $user_num = getAllUsers();
+                                        echo count($user_num);
+                                        ?>
                                     </span>
                                 </div>
 

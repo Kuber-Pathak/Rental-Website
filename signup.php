@@ -178,8 +178,8 @@ if (isset($_POST['isubmit'])) {
                                 <input class="passwordid search" id="password" required name="upassword" type="password"
                                     placeholder="password" />
                                 <div class="icons">
-                                    <i class="fa-regular fa-eye " id="show"></i>
-                                    <i class="fa-regular fa-eye-slash" id="hide"></i>
+                                    <i class="fa-regular fa-eye " id="hide"></i>
+                                    <i class="fa-regular fa-eye-slash" id="show"></i>
                                 </div>
                             </div>
                         </div>
@@ -188,7 +188,7 @@ if (isset($_POST['isubmit'])) {
                                 <label for="birthDate">
                                     <h5>DOB:</h5>
                                 </label>
-                                <input class="nameid search" id="birthDate" required name="ubirthDate" type="date" />
+                                <input class="nameid search" id="birthDate" required name="ubirthDate" type="date" max="2010-02-26" />
                             </div>
                             <div class="searchbar">
                                 <h5> Gender</h5>
@@ -256,8 +256,8 @@ if (isset($_POST['isubmit'])) {
                             <input class="passwordid search" id="ipassword" name="ipassword" required type="password"
                                 placeholder="password" />
                             <div class="iicons">
-                                <i class="fa-regular fa-eye " id="ishow"></i>
-                                <i class="fa-regular fa-eye-slash" id="ihide"></i>
+                                <i class="fa-regular fa-eye " id="ihide"></i>
+                                <i class="fa-regular fa-eye-slash" id="ishow"></i>
                             </div>
                         </div>
                         <div class="center">

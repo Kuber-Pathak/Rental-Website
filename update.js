@@ -102,3 +102,33 @@ for (var i = 0; i <= 20; i++) {
 function showConfirmation() {
   return confirm("Are you sure you want to submit?");
 }
+
+function showCheck() {
+  var form_location = document.querySelector("#search_input").value;
+  var form_contact = document.querySelector("#contact").value;
+
+  var contact_regx = /^\d{10}$/;
+  var location_regx = /^[A-Za-z\s]+$/;
+  if (contact_regx.test(form_contact) && location_regx.test(form_location)) {
+    return true;
+  } else if (
+    !contact_regx.test(form_contact) &&
+    !location_regx.test(form_location)
+  ) {
+    document.querySelector(".contact-error").innerHTML =
+      "**Contact must be of 10 digits";
+    document.querySelector(".location-error").innerHTML =
+      "**Incorrect location format";
+    return false;
+  } else if (!location_regx.test(form_location)) {
+    document.querySelector(".contact-error").innerHTML = "";
+    document.querySelector(".location-error").innerHTML =
+      "**Incorrect location format";
+    return false;
+  } else {
+    document.querySelector(".location-error").innerHTML = "";
+    document.querySelector(".contact-error").innerHTML =
+      "**Contact must be of 10 digits";
+    return false;
+  }
+}

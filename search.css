@@ -473,6 +473,7 @@ nav{
     border: 1px #eee solid;
     box-shadow: 0 0 7px rgba(196, 196, 196, 0.316);
     margin-bottom: 1rem;
+    min-height: 388px;
 }
 #wishlist-btn{
     background: none;

@@ -520,6 +520,7 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
                                                     <label for="contact">Contact Number
                                                         <span class="text-danger">*</span>
                                                     </label>
+                                                    <p class="contact-error"></p>
                                                 </div>
                                             </div>
                                             <div class="last-col2">
@@ -531,6 +532,7 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
                                                         ?>" />
                                                     <label for="search_input">Location <span class="text-danger">*</span>
                                                     </label>
+                                                    <p class="location-error"></p>
                                                 </div>
                                                 <!-- <div class="last-col3">
                   <div class="image-purpose">
@@ -695,7 +697,7 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
                                         </div>
                                     </div>
                                     <div class="submit-btn">
-                                        <button class="approval-btn" type="submit" name="submit">
+                                        <button onclick="return showCheck()" class="approval-btn" type="submit" name="submit">
                                             SUBMIT FOR APPROVAL
                                             <i class="fas fa-arrow-right" style="padding-left: 0.5rem"></i>
                                         </button>
@@ -730,6 +732,7 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
         $property_sql .= " WHERE PropertyID='$propertyID'";
         $property_result = mysqli_query($conn, $property_sql);
         if ($property_result) {
+            $_SESSION['sucess'] = "Property Updated Sucessfully";
             header("Location: profile.php");
         } else {
             echo 'failure';
@@ -798,8 +801,6 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
         $local_result = mysqli_query($conn, $local_sql);
 
     }
-
-
 }
 ?>
 </body>

@@ -36,10 +36,11 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
                     <a href="home.php"><img src="Images/logo3.png" alt="Logo" width="112" /></a>
                 </div>
                 <ul class="middle-side">
+                <li><a href="home.php">Home</a></li>
                     <li>
                         <a href="wishlist.php">WhishList <i class="fa-regular fa-heart"></i></a>
                     </li>
-                    <li><a href="contact.php">Contact Us</a></li>
+                    
                     <li>
                         <a href="list.php">List a place <i class="fa-solid fa-plus"></i></a>
                     </li>
@@ -90,6 +91,9 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
                                             class="fa-solid fa-arrow-right"></i></a>
                                 </li>
                                 <li class="active"><a href=""><span> Your Messages</span> <i
+                                            class="fa-solid fa-arrow-right"></i></a>
+                                </li>
+                                <li><a href="profile_edit.php"><span> Edit Details</span> <i
                                             class="fa-solid fa-arrow-right"></i></a>
                                 </li>
                             </ul>

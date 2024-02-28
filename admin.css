@@ -106,8 +106,6 @@ nav{
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    max-width: 1350px;
-    margin: 0 auto ;
     
 }
 
@@ -115,7 +113,7 @@ nav{
 .left-side {
     color: black;
     position: relative;
-    
+    padding-right:25px ;
 
 }
 .left-btn{
@@ -269,7 +267,7 @@ nav{
 .left-data{
 }
 .dashboard{
-    height: 87vh;
+    height: 88vh;
     /* border: 1px solid #dddddd;
     border-radius: 16px; */
 }
@@ -278,6 +276,8 @@ nav{
     flex-direction: column;
     gap: 15px;
     padding: 45px 15px;
+}.dashboard-menu p{
+    display: inline;
 }
 .dashboard-menu li{
     /* background-color: rgba(194, 235, 251, 0.647); */
@@ -320,13 +320,13 @@ nav{
     max-width: 76%;
 }
 .total-count{
-    margin-top: 45px;
+    margin-top: 15px;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
 }
 .count-card{
-
+    margin: 30px;
     padding: 30px;
     border-radius: 20px;
     color: #fff;
@@ -379,4 +379,14 @@ nav{
 }
 #count-4 .count-icon{
     color: #FF9873;
-} 
+} @media (max-width:1000px){
+    
+    .dashboard-menu li a span p  {
+        display: none;
+    }
+}
+@media (max-width:750px){
+    .dashboard-icon::before{
+        display: none;
+    }  
+}

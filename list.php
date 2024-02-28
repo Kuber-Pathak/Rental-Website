@@ -266,6 +266,15 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
         <div class="logo">
           <a href="home.php"><img src="./Images/logo3.png" alt="Logo" width="112" /></a>
         </div>
+        <ul class="middle-side">
+          <li><a href="home.php"> Home </a></li>
+          <li>
+            <a href="wishlist.php">WishList <i class="fa-regular fa-heart"></i></a>
+          </li>
+          <li>
+            <a href="search.php">Find a place <i class="fa-solid fa-plus"></i></a>
+          </li>
+        </ul>
         <div class="left-side">
           <div class="user-content">
             <div class="user-profile">
@@ -293,7 +302,7 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
   <div class="main">
     <div class="main-container center">
       <form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="POST" enctype="multipart/form-data"
-        onsubmit="return showConfirmation()">
+        onsubmit="return checkForm()">
         <div class="row">
           <div class="form-title">
             <h6>Add Residental Details</h6>
@@ -374,7 +383,7 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
               </div>
               <div class="basic-col5">
                 <div class="basic-purpose">
-                  <input required name="price" id="price" type="text" placeholder="Enter your Price."
+                  <input required name="price" id="price" type="number" placeholder="Enter your Price."
                     class="form-control" />
                   <label for="price">Price
                     <span class="text-danger">*</span>
@@ -538,6 +547,7 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
                   <label for="contact">Contact Number
                     <span class="text-danger">*</span>
                   </label>
+                  <p class="contact-error"></p>
                 </div>
               </div>
               <div class="last-col2">
@@ -546,6 +556,7 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
                     id="search_input" />
                   <label for="search_input">Location <span class="text-danger">*</span>
                   </label>
+                  <p class="location-error"></p>
                 </div>
                 <!-- <div class="last-col3">
                   <div class="image-purpose">
@@ -658,8 +669,8 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
             </div>
           </div>
           <div class="submit-btn">
-            <button class="approval-btn" type="submit" name="submit">
-              SUBMIT FOR APPROVAL
+            <button onclick="return showConfirmation()" class="approval-btn" type="submit" name="submit">
+              SUBMIT
               <i class="fas fa-arrow-right" style="padding-left: 0.5rem"></i>
             </button>
           </div>
@@ -667,6 +678,32 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
       </form>
     </div>
   </div>
+  <script>
+    function checkForm() {
+      var form_location = document.querySelector("#search_input").value;
+      var form_contact = document.querySelector("#contact").value;
+
+      var contact_regx = /^\d{10}$/;
+      var location_regx = /^[A-Za-z\s]+$/;
+      if (contact_regx.test(form_contact) && location_regx.test(form_location)) {
+        return true
+      } else if (!contact_regx.test(form_contact) && !location_regx.test(form_location)) {
+        document.querySelector('.contact-error').innerHTML = "**Contact must be of 10 digits";
+        document.querySelector('.location-error').innerHTML = "**Incorrect location format";
+        return false
+      }
+      else if (!location_regx.test(form_location)) {
+        document.querySelector('.contact-error').innerHTML = "";
+        document.querySelector('.location-error').innerHTML = "**Incorrect location format";
+        return false
+      } else {
+        document.querySelector('.location-error').innerHTML = "";
+        document.querySelector('.contact-error').innerHTML = "**Contact must be of 10 digits";
+        return false
+      }
+
+    }
+  </script>
 </body>
 <script src="list.js?v=<?php echo $version; ?>"></script>
 

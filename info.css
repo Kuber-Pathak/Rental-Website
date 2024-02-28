@@ -173,7 +173,7 @@ nav{
 .user-content{
     box-shadow: rgba(50, 50, 93, 0.25) 0px 8px 8px -4px, rgba(0, 0, 0, 0.3) 0px 4px 8px -8px;
     border: 1px solid #b9b8b8;;
-    padding:8px 8px 8px 16px;
+    padding:10px;
     border-radius: 30px;
     cursor: pointer;
 }
@@ -185,6 +185,9 @@ nav{
     justify-content: center;
     align-items: center;
     gap :14px;
+}
+.user-profile i{
+    padding-left: 8px;
 }
 .hide{
     display: none;

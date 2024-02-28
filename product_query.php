@@ -198,5 +198,35 @@ function getAllUsers()
             return [];
       }
 }
+function getAllMessage()
+{
+      include 'connect.php';
+      $sql = "SELECT * FROM user_message 
+        ";
+      $result = mysqli_query($conn, $sql);
+      if (mysqli_num_rows($result) > 0) {
+            while ($row = mysqli_fetch_assoc($result)) {
+                  $products[] = $row;
+            }
+            return $products;
+      } else {
+            return [];
+      }
+}
 
+function getUser($uid)
+{
+      include 'connect.php';
+      $sql = "SELECT * FROM user_cred  WHERE `user_id` = '$uid' 
+        ";
+      $result = mysqli_query($conn, $sql);
+      if (mysqli_num_rows($result) > 0) {
+            while ($row = mysqli_fetch_assoc($result)) {
+                  $products[] = $row;
+            }
+            return $products;
+      } else {
+            return [];
+      }
+}
 ?>

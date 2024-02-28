@@ -24,11 +24,10 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
         $sql5 = "DELETE FROM Property WHERE PropertyID = '$pid'";
         $result5 = mysqli_query($conn, $sql5);
 
-        // if ($result4) {
-        //     echo 'deleted sucessfully';
-        // } else {
-        //     echo 'not deleted sucessfully';
-        // }
+        if ($result5) {
+            $sucess = "Deleted Sucessfully";
+        }
+      
     }
 }
 ?>
@@ -50,10 +49,10 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
                     <a href="home.php"><img src="Images/logo3.png" alt="Logo" width="112" /></a>
                 </div>
                 <ul class="middle-side">
+                    <li><a href="home.php">Home</a></li>
                     <li>
                         <a href="wishlist.php">WhishList <i class="fa-regular fa-heart"></i></a>
                     </li>
-                    <li><a href="contact.php">Contact Us</a></li>
                     <li>
                         <a href="list.php">List a place <i class="fa-solid fa-plus"></i></a>
                     </li>
@@ -99,6 +98,20 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
                 unset($_SESSION['sucess']);
             }
             ?>
+            <?php
+            if (isset($sucess)) {
+                echo '
+    <div class="sucess">
+    <p class="sucess_msg" id="format">
+    <i class="fa-solid fa-check"></i> 
+    ' . $sucess . '
+    </p>
+    </div>
+
+    ';
+                unset($sucess);
+            }
+            ?>
             <div class="row">
                 <div class="left-column">
                     <div class="left-data">
@@ -118,6 +131,9 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
                                             class="fa-solid fa-arrow-right"></i></a>
                                 </li>
                                 <li><a href="profile_msg.php"><span> Your Messages</span> <i
+                                            class="fa-solid fa-arrow-right"></i></a>
+                                </li>
+                                <li><a href="profile_edit.php"><span> Edit Details</span> <i
                                             class="fa-solid fa-arrow-right"></i></a>
                                 </li>
                             </ul>

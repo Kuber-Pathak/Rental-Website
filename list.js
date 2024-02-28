@@ -21,12 +21,12 @@ document.querySelector(".left-side").addEventListener("click", () => {
 
 //for options
 function updatePropertyOptions() {
-  var propoertyRadios = document.getElementsByName("property");
-  var categoryTypeSelect = document.getElementById("category");
+  var propoertyRadios = document.getElementsByName("property"); //Commercial , residental
+  var categoryTypeSelect = document.getElementById("category"); //category
   // var submitButton = document.querySelector('input[type="submit"]');
 
   // Find the selected category
-  var selectedProperty;
+  var selectedProperty;  //commercial
   for (var i = 0; i < propoertyRadios.length; i++) {
     if (propoertyRadios[i].checked) {
       selectedProperty = propoertyRadios[i].value;

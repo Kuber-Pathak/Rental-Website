@@ -63,10 +63,10 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
           <a href="home.php"><img src="Images/logo3.png" alt="Logo" width="112" /></a>
         </div>
         <ul class="middle-side">
+          <li><a href="home.php"> Home </a></li>
           <li>
             <a href="wishlist.php">WishList <i class="fa-regular fa-heart"></i></a>
           </li>
-          <li><a href="#">Contact Us</a></li>
           <li>
             <a href="list.php">List a place <i class="fa-solid fa-plus"></i></a>
           </li>
@@ -363,53 +363,75 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
                 ?>
                 <div class="room-box">
                   <div class="room-content">
-                    <div class="room-img">
-                      <a href="info.php?id=<?php echo $row['PropertyID']; ?>"><img
-                          src="data:image/jpeg;base64,<?php echo $row["mainphoto"]; ?>" alt="" /></a>
-                      <div class="room-fav">
-                        <a href="wishlist.php?id=<?php echo $row['PropertyID']; ?>"> <i class="fa-regular fa-heart"
-                            style="color: #000000;"></i></a>
-                      </div>
-                      <div class="view_button">
-                        <a href="info.php?id=<?php echo $row['PropertyID']; ?>">View</a>
-                      </div>
-                    </div>
-                    <div class="room-info">
-                      <a href="info.php?id=<?php echo $row['PropertyID']; ?>" title="<?= $row["title"]; ?>">
-                        <h4>
-                          <?php echo
-                            explode(' ', $row["title"])[0] . " " . explode(' ', $row["title"])[1]; ?>
-                        </h4>
-                      </a>
-                      <div class="info-row">
-                        <div class="info-col-1">
-                          <div class="room-location">
-                            <p class="location" title="<?= 'Location:' . $row["location"]; ?>">
-                              <span class=" fas fa-map-pin"></span>
-                              <?php echo
-                                $row["location"]; ?>
-                            </p>
-                          </div>
+
+                    <form action="" method="POST">
+                      <div class="room-img">
+                        <a href="info.php?id=<?php echo $row['PropertyID']; ?>"><img
+                            src="data:image/jpeg;base64,<?php echo $row["mainphoto"]; ?>" alt="" /></a>
+
+                        <div class="room-fav">
+                          <input type="hidden" name="pid" value="<?php echo $row['PropertyID']; ?>">
+                          <input type="hidden" name="uid" value="<?php echo $userid; ?>">
+                          <?php
+                          $wishlist = getWishlist($row['PropertyID'], $userid);
+                          if ($wishlist) {
+                            ?>
+                            <button type="submit" name="wishlist_delete" id="wishlist-btn">
+                              <i class="fa-solid fa-heart" style="color: #ff0000;"></i>
+                            </button>
+                            <?
+                          } else {
+                            ?>
+                            <button type="submit" name="wishlist_insert" id="wishlist-btn">
+                              <i class="fa-regular fa-heart" style="color: #000000;"></i>
+                            </button>
+                            <?php
+
+                          } ?>
                         </div>
-                        <div class="info-col">
-                          <div class="room-type" title="<?= 'Category:' . $row["category"]; ?>">
-                            <img src="./Images/roomLogo.png" alt="" height="20px" width="20px" />
-                            <span class="small-text">
-                              <?= $row["category"]; ?>
-                            </span>
-                          </div>
-                        </div>
-                        <div class="info-col " title="<?= 'Category:' . 'Pice : NPR ' . $row["price"]; ?>">
-                          <div class="room-price">
-                            <img src="./Images/cash.png" alt="" height="20px" width="20px" />
-                            <span class="small-text">
-                              <?= 'NPR ' .
-                                $row["price"]; ?>
-                            </span>
-                          </div>
+
+                        <div class="view_button">
+                          <a href="info.php?id=<?php echo $row['PropertyID']; ?>">View</a>
                         </div>
                       </div>
-                    </div>
+
+                      <div class="room-info">
+                        <a href="info.php?id=<?php echo $row['PropertyID']; ?>" title="<?= $row["title"]; ?>">
+                          <h4>
+                            <?php echo
+                              explode(' ', $row["title"])[0] . " " . explode(' ', $row["title"])[1]; ?>
+                          </h4>
+                        </a>
+                        <div class="info-row">
+                          <div class="info-col-1">
+                            <div class="room-location">
+                              <p class="location" title="<?= 'Location:' . $row["location"]; ?>">
+                                <span class=" fas fa-map-pin"></span>
+                                <?php echo
+                                  $row["location"]; ?>
+                              </p>
+                            </div>
+                          </div>
+                          <div class="info-col">
+                            <div class="room-type" title="<?= 'Category:' . $row["category"]; ?>">
+                              <img src="./Images/roomLogo.png" alt="" height="20px" width="20px" />
+                              <span class="small-text">
+                                <?= $row["category"]; ?>
+                              </span>
+                            </div>
+                          </div>
+                          <div class="info-col " title="<?= 'Category:' . 'Pice : NPR ' . $row["price"]; ?>">
+                            <div class="room-price">
+                              <img src="./Images/cash.png" alt="" height="20px" width="20px" />
+                              <span class="small-text">
+                                <?= 'NPR ' .
+                                  $row["price"]; ?>
+                              </span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </form>
                   </div>
 
                 </div>

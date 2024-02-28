@@ -96,7 +96,7 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
                 unset($sucess);
             } ?>
             <div class="row">
-                <!-- <div class="wishlistw"> Wishlists </div> -->
+                <div class="wishlistw"> Wishlists </div>
                 <div class="image">
                     <?php
                     if (mysqli_num_rows($result) > 0) {
